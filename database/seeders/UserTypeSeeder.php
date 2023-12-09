@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserTypesSeeder extends Seeder
+class UserTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,6 +17,7 @@ class UserTypesSeeder extends Seeder
             ['name' => 'Estudiante'],
             ['name' => 'Profesor'],
             ['name' => 'Administrador'],
+            ['name' => 'Chofer'],
         ]);
     }
 }

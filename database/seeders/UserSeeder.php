@@ -55,6 +55,58 @@ class UserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Alvaro',
+                'lastname' => 'Lluvians',
+                'email' => 'lluvians@tecsup.edu.pe',
+                'phone' => '333333333',
+                'dni' => 70099100,
+                'password' => Hash::make('tengosed'),
+                'user_type_id' => 4, // Asegúrate de que el ID coincida con el tipo de usuario 'Administrador'
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Profesor',
+                'lastname' => 'ProfesorLastname',
+                'email' => 'profesor@tecsup.edu.pe',
+                'dni' => 56789012,
+                'phone' => '345678901',
+                'password' => Hash::make('tengosed'),
+                'user_type_id' => 2, // 2 es el ID para el tipo de usuario 'Profesor'
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Estudiante',
+                'lastname' => 'EstudianteLastname',
+                'email' => 'estudiante@tecsup.edu.pe',
+                'dni' => 87654321,
+                'phone' => '456789012',
+                'password' => Hash::make('tengosed'),
+                'user_type_id' => 1, // 1 es el ID para el tipo de usuario 'Estudiante'
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Admin',
+                'lastname' => 'AdminLastname',
+                'email' => 'admin@tecsup.edu.pe',
+                'dni' => 12345678,
+                'phone' => '987654321',
+                'password' => Hash::make('tengosed'),
+                'user_type_id' => 3, // 3 es el ID para el tipo de usuario 'Administrador'
+                'email_verified_at' => now(),
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
         ]);
     }
 }
