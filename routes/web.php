@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['type:Administrador'])->group(function () {
         Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+        Route::view('/admin/bus', 'admin.bus')->name("/admin/bus");
     });
 
     Route::middleware(['type:Estudiante'])->group(function () {
