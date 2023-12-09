@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'name' => 'Joseph',
                 'lastname' => 'Flores',
                 'email' => 'joseph@tecsup.edu.pe',
+                'dni' => 72299120,
                 'phone' => '123456789',
                 'password' => Hash::make('tengosed'),
                 'user_type_id' => 1, // Asegúrate de que el ID coincida con el tipo de usuario 'Estudiante'
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
                 'name' => 'Kelly',
                 'lastname' => 'Castillo',
                 'email' => 'kelly@tecsup.edu.pe',
+                'dni' => 75599120,
                 'phone' => '946752980',
                 'password' => Hash::make('tengosed'),
                 'user_type_id' => 2, // Asegúrate de que el ID coincida con el tipo de usuario 'Profesor'
@@ -45,6 +47,7 @@ class UserSeeder extends Seeder
                 'lastname' => 'Santos',
                 'email' => 'hirotoshi@tecsup.edu.pe',
                 'phone' => '555555555',
+                'dni' => 70099120,
                 'password' => Hash::make('tengosed'),
                 'user_type_id' => 3, // Asegúrate de que el ID coincida con el tipo de usuario 'Administrador'
                 'email_verified_at' => now(),
