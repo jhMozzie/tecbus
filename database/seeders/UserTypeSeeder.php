@@ -17,7 +17,7 @@ class UserTypeSeeder extends Seeder
             ['name' => 'Estudiante'],
             ['name' => 'Profesor'],
             ['name' => 'Administrador'],
-            ['name' => 'Chofer'],
+            ['name' => 'Conductor'],
         ]);
     }
 }
