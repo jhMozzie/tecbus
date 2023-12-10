@@ -108,6 +108,6 @@ class BusComponent extends Component
     public function render()
     {
         $buses = ModelsBus::paginate(10);
-        return view('livewire.buscomponent',compact('buses'));
+        return view('livewire.bus-component',compact('buses'));
     }
 }
