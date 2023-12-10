@@ -17,11 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('phone');
-            $table->string('lincense_number');
-            $table->string('lincense_type');
+            $table->string('license_number');
+            $table->string('license_type');
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 
