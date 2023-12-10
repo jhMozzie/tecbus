@@ -1,5 +1,5 @@
 <div>
-    <div class="bg-white-shadow rounded-lg p-6">
+    <div class="bg-white-shadow rounded-lg p-6 mb-5">
         <form wire:submit="save">
             <div class="mb-4">
                 <x-input-label>Nombre</x-input-label>
@@ -42,11 +42,19 @@
             </div>
         </form>
     </div>
-    <div class="bg-white-shadow rounded-lg p-6">
+    <div class="bg-zinc-500 rounded-lg p-6 mt-5">
         <ul class="list-disc list-inside">
             @foreach ($posts as $post)
-                <li>
+                <li class="flex justify-between">
                     {{ $post->title }}
+                    <div>
+                        <x-primary-button>
+                            Crear
+                        </x-primary-button>
+                        <x-danger-button>
+                            Eliminar
+                        </x-danger-button>
+                    </div>
             @endforeach
             </li>
         </ul>
