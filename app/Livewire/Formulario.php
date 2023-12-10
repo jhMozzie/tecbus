@@ -13,10 +13,14 @@ class Formulario extends Component
     public $category_id = '', $title, $content;
     public $selectedTags = [];
 
+    public $posts;
+
     public function mount()
     {
         $this->categories = Category::all();
         $this->tags = Tag::all();
+
+        $this->posts = Post::all();
     }
 
     public function save()
@@ -28,13 +32,23 @@ class Formulario extends Component
         //     'tags' => $this->selectedTags,
         // ]);
 
-        $post = Post::create([
-            'category_id' => $this->category_id,
-            'title' => $this->title,
-            'content' => $this->content,
-        ]);
+        //* Metodo 1
+        // $post = Post::create([
+        //     'category_id' => $this->category_id,
+        //     'title' => $this->title,
+        //     'content' => $this->content,
+        // ]);
+
+        // * Metodo 2
+        $post = Post::create(
+            $this->only('category_id', 'title', 'content')
+        );
 
         $post->tags()->attach($this->selectedTags);
+
+        $this->reset(['category_id', 'title', 'content', 'selectedTags']);
+
+        $this->posts = Post::all();
     }
 
     public function render()

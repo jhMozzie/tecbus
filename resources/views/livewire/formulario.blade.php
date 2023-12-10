@@ -42,4 +42,13 @@
             </div>
         </form>
     </div>
+    <div class="bg-white-shadow rounded-lg p-6">
+        <ul class="list-disc list-inside">
+            @foreach ($posts as $post)
+                <li>
+                    {{ $post->title }}
+            @endforeach
+            </li>
+        </ul>
+    </div>
 </div>
