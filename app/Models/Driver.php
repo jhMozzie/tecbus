@@ -12,7 +12,7 @@ class Driver extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['dni', 'name', 'lastname', 'phone', 'lincense_number', 'lincense_type'];
+    protected $fillable = ['dni', 'name', 'lastname', 'phone', 'license_number', 'license_type'];
 
     public function buses()
     {

@@ -51,7 +51,7 @@
                              <x-errores :messages="$errors->get('capacity')"/>                         
                         </div>
                         <div class="mb-4">
-                            <label>Etiquetas</label>
+                            <label>Conductores</label>
                             <div>
                                 @foreach ($drivers as $driver)
                                     <div class="mb-2">
@@ -108,7 +108,7 @@
                              <x-errores :messages="$errors->get('busedit.v_capacity')"/>    
                         </div>
                         <div class="mb-4">
-                            <label>Etiquetas</label>
+                            <label>Conductores</label>
                             <div>
                                 @foreach ($drivers as $driver)
                                     <div class="mb-2">
