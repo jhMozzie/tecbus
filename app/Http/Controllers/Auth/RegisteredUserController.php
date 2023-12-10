@@ -43,6 +43,7 @@ class RegisteredUserController extends Controller
 
         $emailTecsup = $request->input('email') . '@tecsup.edu.pe';
 
+
         $user = User::create([
             'name' => $request->name,
             'lastname' => $request->lastname,
