@@ -31,11 +31,14 @@ class AuthenticatedSessionController extends Controller
 
         $url = '';
         if ($request->user()->userType->name === "Administrador") {
-            $url = '/admin/dashboard';
+            $url = '/Administrador/dashboard';
         } else if ($request->user()->userType->name === "Profesor") {
-            $url = '/profesor/dashboard';
+            $url = '/Profesor/dashboard';
         } else if ($request->user()->userType->name === "Estudiante") {
-            $url = '/dashboard';
+            $url = '/Estudiante/dashboard';
+
+        }else if ($request->user()->userType->name === "Chofer") {
+            $url = '/Chofer/dashboard';
         }
 
         return redirect()->intended($url);

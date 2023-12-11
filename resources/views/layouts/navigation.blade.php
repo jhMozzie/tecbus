@@ -11,11 +11,48 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+                @if (auth()->check())
+                    @switch(auth()->user()->userType->name)
+                        @case('Estudiante')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        </div>
+                        @break
+                        @case('Profesor')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        </div>
+                        @break
+                        @case('Administrador')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('/admin/driver')" :active="request()->routeIs('/admin/driver')" wire:navigate>
+                                Chofer
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('/admin/bus')" :active="request()->routeIs('/admin/bus')" wire:navigate>
+                                buses
+                            </x-nav-link>
+                        </div>
+                        @break
+                        @case('Chofer')
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        </div>
+                        @break
+                    @endswitch
+                @endif
             </div>
 
             <!-- Settings Dropdown -->

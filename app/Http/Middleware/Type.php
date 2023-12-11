@@ -16,7 +16,7 @@ class Type
     public function handle(Request $request, Closure $next, $type): Response
     {
         if ($request->user()->usertype->name !== $type) {
-            return redirect('dashboard');
+            return redirect('/'.$request->user()->usertype->name.'/dashboard');
         }
         return $next($request);
     }

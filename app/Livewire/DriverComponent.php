@@ -4,9 +4,13 @@ namespace App\Livewire;
 
 use App\Models\Driver;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DriverComponent extends Component
 {   
+        //si no tiene el esto la paginacion te dara muchos errores es para hacer que sea dinamico 
+    use WithPagination;
+
     public $dni,$name,$lastname,$phone,$license_number,$license_type;
 
     public $open2 =false;

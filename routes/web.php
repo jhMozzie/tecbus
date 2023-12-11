@@ -52,22 +52,29 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::middleware(['type:Administrador'])->group(function () {
-        Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
         Route::view('/admin/bus', 'admin.bus')->name("/admin/bus");
         Route::view('/admin/driver', 'admin.driver')->name("/admin/driver");
+        Route::view('/Administrador/dashboard', 'admin.admin_dashboard')->name("Administrador.dashboard");
     });
 
     Route::middleware(['type:Estudiante'])->group(function () {
-        Route::get('/estudiante/dashboard', [EstudianteController::class, 'EstudianteDashboard'])->name('estudiante.dashboard');
+        Route::view('/Estudiante/dashboard', 'estudiante.estudiante_dashboard')->name("Estudiante.dashboard");
     });
 
     Route::middleware(['type:Profesor'])->group(function () {
-        Route::get('/profesor/dashboard', [ProfesorController::class, 'ProfesorDashboard'])->name('profesor.dashboard');
+        Route::view('/Profesor/dashboard', 'profesor.profesor_dashboard')->name("Profesor.dashboard");
+    });
+
+    Route::middleware(['type:Chofer'])->group(function () {
+        Route::view('/Chofer/dashboard', 'chofer.chofer_dashboard')->name("Chofer.dashboard");
     });
 });
 
 
-
+// ['name' => 'Estudiante'],
+// ['name' => 'Profesor'],
+// ['name' => 'Administrador'],
+// ['name' => 'Chofer'],
 
 
 
