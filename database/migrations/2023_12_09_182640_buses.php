@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('model');
             $table->string('brand');
             $table->string('soat');
-            $table->integer('capacity');
+            $table->unsignedInteger('capacity');
             $table->timestamps();
             $table->softDeletes();
         });
