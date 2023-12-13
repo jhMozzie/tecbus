@@ -11,6 +11,9 @@ class BusComponent extends Component
 {
     //si no tiene el esto la paginacion te dara muchos errores es para hacer que sea dinamico 
     use WithPagination;
+    //variable para buscar
+    public $search;
+    public $buscapor = "model";
     // atributos de la tabla 
     public $drivers;
     //para cerrar y abrir con los if
@@ -107,7 +110,7 @@ class BusComponent extends Component
     }
     public function render()
     {
-        $buses = ModelsBus::paginate(10);
+        $buses = ModelsBus::where($this->buscapor,'like','%'.$this->search.'%')->paginate(10);
         return view('livewire.bus-component',compact('buses'));
     }
 }
