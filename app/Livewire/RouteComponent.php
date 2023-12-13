@@ -24,6 +24,9 @@ class RouteComponent extends Component
     // Create Routes Variable
     // public $routes;
 
+    // Edit Variables
+    public $routeid;
+
     public $showModal = false;
 
     public function mount()
@@ -34,7 +37,6 @@ class RouteComponent extends Component
             'direction' =>  ['Paradero Inicial a Tecsup', 'Tecsup a Paradero Final'],
         ];
 
-
         // $this->routes = Route::all();
     }
 
@@ -44,13 +46,20 @@ class RouteComponent extends Component
         $this->showModal = true;
     }
 
-    // public function closeModal()
-    // {
-    //     $this->showModal = false;
-    // }
+    public function closeModal()
+    {
+        $this->showModal = false;
+    }
 
     public function save()
     {
+        $this->validate([
+            'name' => 'required',
+            'service_day' => 'required',
+            'departure_time' => 'required',
+            'turn' => 'required',
+            'direction' => 'required',
+        ]);
 
         // dd([
         //     'name' => $this->name,
@@ -79,6 +88,10 @@ class RouteComponent extends Component
         $this->showModal = false;
     }
 
+    public function edit($routeid)
+    {
+        $this->resetValidation();
+    }
     public function render()
     {
         $routes = Route::paginate(2);

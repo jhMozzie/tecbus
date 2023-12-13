@@ -17,13 +17,13 @@ class RouteSeeder extends Seeder
         DB::table('routes')->insert([
             [
                 'name' => 'Av. Aviacion - J. Prado - Campus',
-                'service_day' => 'Lunes - Viernes',
+                'service_day' => 'Lunes a Viernes',
                 'departure_time' => '7:15 AM',
                 'direction' => 'Paradero Inicial a Tecsup',
                 'turn' => 'Mañana',
             ], [
                 'name' => 'Puente Nuevo - Campus',
-                'service_day' => 'Lunes - Viernes',
+                'service_day' => 'Lunes a Viernes',
                 'departure_time' => '7:20 AM',
                 'direction' => 'Paradero Inicial a Tecsup',
                 'turn' => 'Mañana',
