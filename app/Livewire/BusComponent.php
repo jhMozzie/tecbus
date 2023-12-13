@@ -17,19 +17,19 @@ class BusComponent extends Component
     // atributos de la tabla 
     public $drivers;
     //para cerrar y abrir con los if
-    public $open2 = false; 
-    public $open = false; 
+    public $open2 = false;
+    public $open = false;
     //atributos del bus
-    public $model,$brand,$soat,$capacity;
-    public $chofer =[];
+    public $model, $brand, $soat, $capacity;
+    public $chofer = [];
     // propiedades para poder hacer el update e pintar el edit
     public $buside = '';
-    public $busedit =[
-        'v_model'=> '',
-        'v_brand'=> '',
-        'v_soat'=> '',
-        'v_capacity'=> '',
-        'v_chofer'=> []
+    public $busedit = [
+        'v_model' => '',
+        'v_brand' => '',
+        'v_soat' => '',
+        'v_capacity' => '',
+        'v_chofer' => []
     ];
 
     public function save()
@@ -43,10 +43,10 @@ class BusComponent extends Component
             'chofer' => 'required|array'
         ]);
         //se crea el nuevo bus y los guardon en bus
-        $bus = ModelsBus::create($this->only('model', 'brand', 'soat','capacity'));
+        $bus = ModelsBus::create($this->only('model', 'brand', 'soat', 'capacity'));
         //se hace la relacion de bus a chofer
         $bus->drivers()->attach($this->chofer);
-        $this->reset(['model', 'brand', 'soat','capacity', 'chofer', 'open2']);
+        $this->reset(['model', 'brand', 'soat', 'capacity', 'chofer', 'open2']);
     }
     // al para pintar la tabla update
     public function edit($busid)
@@ -95,22 +95,26 @@ class BusComponent extends Component
     }
 
     //funcion usada solo para abrir el crear y tambien para que resete las validaciones
-    public function crear(){
+    public function crear()
+    {
         $this->resetValidation();
         $this->open2 = true;
     }
-        // eliminando el delete papu
-    public function destroy($bustid){
-            $bus = ModelsBus::find($bustid);
-            $bus->delete();
-        }
+    // eliminando el delete papu
+    public function destroy($bustid)
+    {
+        $bus = ModelsBus::find($bustid);
+        $bus->delete();
+    }
     public function mount()
     {
         $this->drivers = Driver::all();
     }
     public function render()
     {
+
         $buses = ModelsBus::where($this->buscapor,'like','%'.$this->search.'%')->paginate(10);
         return view('livewire.bus-component',compact('buses'));
+
     }
 }

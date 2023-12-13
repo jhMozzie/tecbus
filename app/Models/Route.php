@@ -20,6 +20,6 @@ class Route extends Model
 
     public function busstops()
     {
-        return $this->belongsToMany(BusStop::class, 'route_busstop');
+        return $this->belongsToMany(::class, 'route_busstop');
     }
 }
