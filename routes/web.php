@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['type:Administrador'])->group(function () {
         Route::view('/admin/bus', 'admin.bus')->name("/admin/bus");
         Route::view('/admin/driver', 'admin.driver')->name("/admin/driver");
+        Route::view('/admin/route', 'admin.route')->name("/admin/route");
         Route::view('/Administrador/dashboard', 'admin.admin_dashboard')->name("Administrador.dashboard");
     });
 

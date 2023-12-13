@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('routes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('service_day');
+            $table->enum('service_day', ['Lunes a Viernes']);
             $table->string('departure_time');
-            $table->string('turn');
+            $table->enum('turn', ['Mañana', 'Tarde', 'Noche']);
+            $table->enum('direction', ['Paradero Inicial a Tecsup', 'Tecsup a Paradero Final']);
             $table->string('image')->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
