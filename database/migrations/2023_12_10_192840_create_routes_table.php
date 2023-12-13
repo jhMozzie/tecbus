@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('service_day');
-            $table->time('departure_time');
+            $table->string('departure_time');
             $table->string('turn');
             $table->string('image')->nullable()->default(null);
             $table->softDeletes();
