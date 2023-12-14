@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::view('/admin/driver', 'admin.driver')->name("/admin/driver");
         Route::view('/admin/route', 'admin.route')->name("/admin/route");
         Route::view('/admin/busstop', 'admin.busstop')->name("/admin/busstop");
+        Route::view('/admin/trip', 'admin.trip')->name("/admin/trip");
         Route::view('/Administrador/dashboard', 'admin.admin_dashboard')->name("Administrador.dashboard");
     });
 
