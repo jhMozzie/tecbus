@@ -44,21 +44,18 @@ class RouteComponent extends Component
         $this->showModal = true;
     }
 
-    // public function closeModal()
-    // {
-    //     $this->showModal = false;
-    // }
+
 
     public function save()
     {
 
-        // dd([
-        //     'name' => $this->name,
-        //     'service_day' => $this->enumOptions['service_day'][0],
-        //     'departure_time' => $this->departure_time,
-        //     'turn' => $this->turn,
-        //     'direction' => $this->direction,
-        // ]);
+        $this->validate([
+            'name' => 'required',
+            'service_day' => 'required',
+            'departure_time' => 'required',
+            'turn' => 'required',
+            'direction' => 'required',
+        ]);
 
         Route::create([
             'name' => $this->name,
