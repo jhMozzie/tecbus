@@ -49,7 +49,7 @@ class BusstopComponent extends Component
 
     public function render()
     {
-        $busstops = BusStop::paginate(3);
+        $busstops = BusStop::paginate(10);
         return view('livewire.busstop-component', compact('busstops'));
     }
 }

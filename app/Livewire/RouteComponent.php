@@ -13,7 +13,7 @@ class RouteComponent extends Component
     use WithPagination;
 
     public $name;
-    public $service_day;
+    public $service_day = 'Lunes a Viernes';
     public $direction = 'Paradero Inicial a Tecsup';
     public $departure_time;
     public $turn = 'Mañana';
@@ -34,8 +34,7 @@ class RouteComponent extends Component
             'direction' =>  ['Paradero Inicial a Tecsup', 'Tecsup a Paradero Final'],
         ];
 
-
-        // $this->routes = Route::all();
+        // $this->service_day = $this->enumOptions['service_day'][0];
     }
 
 
