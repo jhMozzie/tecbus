@@ -5,7 +5,7 @@
             <h2 class="text-3xl font-semibold mb-4">Lista de Rutas </h2>
             <div class="flex flex-row justify-between mb-4 ">
                 <div>
-                    <button wire:click="openModal"
+                    <button wire:click="openCreateModal"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Agregar
                     </button>
@@ -97,7 +97,8 @@
                                             </button>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
-                                            <button class="text-blue-600 hover:text-blue-900 focus:outline-none">
+                                            <button wire:click="editRoute({{ $route->id }})"
+                                                class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-indigo-500" <svg width="24" height="24"
                                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +110,7 @@
                                                 </svg>
                                             </button>
                                             <button class="text-red-600 hover:text-red-900 focus:outline-none">
-                                                <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
+                                                <!-- Add your delete icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                     stroke-linejoin="round">
@@ -135,7 +136,7 @@
     </div>
 
     {{-- Modal Crear --}}
-    @if ($showModal)
+    @if ($showCreateModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
             <div class="py-12">
                 <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
@@ -175,7 +176,7 @@
                                 <x-primary-button class="mr-2">
                                     Confirmar
                                 </x-primary-button>
-                                <x-danger-button wire:click="set('showModal', false)">
+                                <x-danger-button wire:click="closeCreateModal">
                                     Cancelar
                                 </x-danger-button>
                             </div>

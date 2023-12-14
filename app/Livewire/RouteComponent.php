@@ -24,7 +24,10 @@ class RouteComponent extends Component
     // Create Routes Variable
     // public $routes;
 
-    public $showModal = false;
+    public $showCreateModal = false;
+
+    // Edit Variables
+    public $editingRoute;
 
     public function mount()
     {
@@ -38,11 +41,15 @@ class RouteComponent extends Component
     }
 
 
-    public function openModal()
+    public function openCreateModal()
     {
-        $this->showModal = true;
+        $this->showCreateModal = true;
     }
 
+    public function closeCreateModal()
+    {
+        $this->showCreateModal = false;
+    }
 
 
     public function save()
@@ -72,7 +79,7 @@ class RouteComponent extends Component
         $this->direction = '';
 
         // Close modal
-        $this->showModal = false;
+        $this->showCreateModal = false;
     }
 
     public function render()

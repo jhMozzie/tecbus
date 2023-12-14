@@ -14,17 +14,33 @@ class BusstopComponent extends Component
 
     public $busstopid;
 
-    public $showModal = false;
 
-    public function openModal()
+    //* Open Create Modal
+    public $showCreateModal = false;
+
+    public function openCreateModal()
     {
-        $this->showModal = true;
+        $this->showCreateModal = true;
     }
 
-    public function closeModal()
+    public function closeCreateModal()
     {
-        $this->showModal = false;
+        $this->showCreateModal = false;
     }
+
+    //* Open Edit Modal
+    public $showEditModal = false;
+
+    public function openEditModal()
+    {
+        $this->showEditModal = true;
+    }
+
+    public function closeEditModal()
+    {
+        $this->showEditModal = false;
+    }
+
 
     public function save()
     {
@@ -39,7 +55,7 @@ class BusstopComponent extends Component
         $this->name = '';
 
         // Close modal
-        $this->showModal = false;
+        $this->showCreateModal = false;
     }
 
     public function edit($busstopid)

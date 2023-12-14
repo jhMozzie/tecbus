@@ -1,10 +1,11 @@
 <div>
     <div class="bg-white shadow rounded-lg p-6">
-        <div class="flex flex-col ">
+        <div class="flex flex-col">
             <h2 class="text-3xl font-semibold mb-4">Lista de Paraderos </h2>
-            <div class="flex flex-row justify-between mb-4 ">
+            {{-- Buscar  --}}
+            <div class="flex flex-row justify-between mb-4">
                 <div>
-                    <button wire:click="openModal"
+                    <button wire:click="openCreateModal"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Agregar
                     </button>
@@ -46,7 +47,8 @@
                                             <div class="text-sm font-medium text-gray-900">{{ $busstop->name }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
-                                            <button class="text-blue-600 hover:text-blue-900 focus:outline-none">
+                                            <button wire:click="openEditModal"
+                                                class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-indigo-500" <svg width="24" height="24"
                                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +86,7 @@
     </div>
 
     {{-- Modal Crear --}}
-    @if ($showModal)
+    @if ($showCreateModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
             <div class="py-12">
                 <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
@@ -98,7 +100,7 @@
                                 <x-primary-button class="mr-2">
                                     Confirmar
                                 </x-primary-button>
-                                <x-danger-button wire:click="closeModal">
+                                <x-danger-button wire:click="closeCreateModal">
                                     Cancelar
                                 </x-danger-button>
                             </div>
@@ -107,7 +109,32 @@
                 </div>
             </div>
         </div>
-</div>
-@endif
+    @endif
 
+    {{-- Modal Edit --}}
+    @if ($showEditModal)
+        <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+            <div class="py-12">
+                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+                        <form wire:submit="edit">
+                            <!-- Agrega aquí los campos de edición según tus necesidades -->
+                            <div class="mb-4">
+                                <x-label>Nombre</x-label>
+                                <x-input wire:model="name" class="w-full" />
+                            </div>
+                            <div class="flex justify-end">
+                                <x-primary-button class="mr-2">
+                                    Actualizar
+                                </x-primary-button>
+                                <x-danger-button wire:click="closeEditModal">
+                                    Cancelar
+                                </x-danger-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </div>
