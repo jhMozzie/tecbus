@@ -12,7 +12,7 @@ class Bus extends Model
 
     use SoftDeletes;
 
-    protected $fillable = ['model', 'brand', 'soat', 'capacity'];
+    protected $fillable = ['model', 'brand', 'soat', 'capacity','license_plate'];
 
     public function drivers()
     {

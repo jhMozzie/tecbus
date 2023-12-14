@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
+            $table->string('license_plate')->unique();
             $table->string('model');
             $table->string('brand');
             $table->string('soat');

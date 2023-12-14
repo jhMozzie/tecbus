@@ -39,7 +39,7 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <!-- Fila de ejemplo -->
                                 @foreach ($trips as $trip)
-                                    <tr>
+                                    <tr wire:key="trip-{{ $trip->id }}">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm font-medium text-gray-900">
                                                {{ $trip->route->name }}                                        
@@ -92,6 +92,62 @@
         </div>
     </div>
 
+    {{-- crear --}}
+    @if ($open2)
+    <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+        <div class="py-12">
+            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white shadow rounded-lg p-6">
+                    <form wire:submit="save">
+                        <div class="mb-4">
+                            <label  for="create-category" >Ruta</label>
+                            <x-select  id="create-category" class="w-full" wire:model="route_id">
+                                <option value="" disabled>Seleccione una de las categorías</option>
+                                @foreach ($routes as $route)
+                                <option value="{{$route->id}}">{{$route->name}}</option>
+                                @endforeach
+                            </x-select>
+                            <x-input-error :messages="$errors->get('route_id')"/>
+                        </div>
+                       
+                        <div class="mb-4">
+                            <label >Bus</label>
+                            <x-select  class="w-full" wire:model="bus_id">
+                                <option value="" disabled>Seleccione una de las categorías</option>
+                                @foreach ($buses as $bus)
+                                    <option value="{{$bus->id}}">{{$bus->model}}</option>
+                                @endforeach
+                            </x-select>
+                            <x-input-error :messages="$errors->get('bus_id')"/>
+                        </div>
+                        <div class="mb-4">
+                            <label for="create-trip_date">Fecha</label>
+                            <input type="date" id="create-trip_date" class="w-full" wire:model="trip_date">
+                            {{-- modifique el input-error --}}
+                            <x-input-error :messages="$errors->get('trip_date')"/>
+                        </div>
+                        <div class="mb-4">
+                            <label for="create-trip_date">Capacidad Estudiante</label>
+                            <input type="number" id="create-trip_date" class="w-full" wire:model="student_capacity" disabled>
+                            {{-- modifique el input-error --}}
+                            <x-input-error :messages="$errors->get('student_capacity')"/>
+                        </div>
+                        <div class="mb-4">
+                            <label for="create-trip_date">Capacidad Profesor</label>
+                            <input type="number" id="create-trip_date" class="w-full" wire:model="professor_capacity" disabled>
+                            {{-- modifique el input-error --}}
+                            <x-input-error :messages="$errors->get('professor_capacity')"/>
+                        </div>
 
+                        <div class="flex justify-end">
+                            <button type="button" class="mr-2" wire:click="set('open2', false)">Cancelar</button>
+                            <x-primary-button>Crear</x-primary-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 
 </div>

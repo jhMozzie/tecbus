@@ -15,6 +15,7 @@ class BusSeeder extends Seeder
     {
         DB::table('buses')->insert([
             [
+                'license_plate' => 'ABC123',
                 'model' => 'Travego',
                 'brand' => 'Mercedes-Benz',
                 'soat' => 'La Positiva',
@@ -23,6 +24,7 @@ class BusSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'license_plate' => 'XYZ456',
                 'model' => 'Crossway',
                 'brand' => 'Iveco',
                 'soat' => 'Rimac Seguros',
@@ -31,6 +33,7 @@ class BusSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'license_plate' => 'LMN789',
                 'model' => '9900',
                 'brand' => 'Volvo',
                 'soat' => 'Mapfre',
@@ -39,6 +42,7 @@ class BusSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'license_plate' => 'PQR012',
                 'model' => 'Coach',
                 'brand' => 'MAN',
                 'soat' => 'Vivir Seguros',
@@ -47,6 +51,7 @@ class BusSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
+                'license_plate' => 'STU345',
                 'model' => 'S 431 DT',
                 'brand' => 'Setra',
                 'soat' => 'Protecta',
@@ -55,5 +60,6 @@ class BusSeeder extends Seeder
                 'updated_at' => now(),
             ],
         ]);
+        
     }
 }

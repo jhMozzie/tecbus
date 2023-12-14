@@ -20,11 +20,12 @@ class BusComponent extends Component
     public $open2 = false;
     public $open = false;
     //atributos del bus
-    public $model, $brand, $soat, $capacity;
+    public $model, $brand, $soat, $capacity,$license_plate;
     public $chofer = [];
     // propiedades para poder hacer el update e pintar el edit
     public $buside = '';
     public $busedit = [
+        'v_license_plate' => '',
         'v_model' => '',
         'v_brand' => '',
         'v_soat' => '',
@@ -36,6 +37,7 @@ class BusComponent extends Component
     {
         //validaciones para mi create son a los campos que tiene como valor en la vista
         $this->validate([
+            'license_plate' => 'required',
             'model' => 'required',
             'brand' => 'required',
             'soat' => 'required',
@@ -43,10 +45,10 @@ class BusComponent extends Component
             'chofer' => 'required|array'
         ]);
         //se crea el nuevo bus y los guardon en bus
-        $bus = ModelsBus::create($this->only('model', 'brand', 'soat', 'capacity'));
+        $bus = ModelsBus::create($this->only('license_plate','model', 'brand', 'soat', 'capacity'));
         //se hace la relacion de bus a chofer
         $bus->drivers()->attach($this->chofer);
-        $this->reset(['model', 'brand', 'soat', 'capacity', 'chofer', 'open2']);
+        $this->reset(['license_plate','model', 'brand', 'soat', 'capacity', 'chofer', 'open2']);
     }
     // al para pintar la tabla update
     public function edit($busid)
@@ -60,6 +62,7 @@ class BusComponent extends Component
         //guardando el id para hacer el update despues 
         $this->buside = $busid;
 
+        $this->busedit['v_license_plate'] = $bus->license_plate;
         $this->busedit['v_model'] = $bus->model;
         $this->busedit['v_brand'] = $bus->brand;
         $this->busedit['v_soat'] = $bus->soat;
@@ -72,6 +75,7 @@ class BusComponent extends Component
     {
         //aca tengo que poner los validadores para los campos de update  metele los erroes en el campo vista -------------
         $this->validate([
+            'busedit.v_license_plate' => 'required',
             'busedit.v_model' => 'required',
             'busedit.v_brand' => 'required',
             'busedit.v_soat' => 'required',
@@ -82,6 +86,7 @@ class BusComponent extends Component
         $bus = ModelsBus::find($this->buside);
 
         $bus->update([
+            'license_plate' => $this->busedit['v_license_plate'],
             'model' => $this->busedit['v_model'],
             'brand' => $this->busedit['v_brand'],
             'soat' => $this->busedit['v_soat'],
