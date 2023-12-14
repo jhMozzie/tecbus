@@ -53,7 +53,6 @@ class BusComponent extends Component
     // al para pintar la tabla update
     public function edit($busid)
     {
-        //falta poner el validate de este campo
 
         $this->resetValidation();
         //abre el pedaso de codigo 

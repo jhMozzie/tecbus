@@ -18,6 +18,11 @@ class Trip extends Model
         'student_capacity',
         'professor_capacity',
     ];
+
+    protected $casts = [
+        'trip_date' => 'datetime',
+    ];
+
     public function route(){
         return $this->belongsTo(Route::class);
     }
