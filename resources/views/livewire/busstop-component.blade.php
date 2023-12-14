@@ -68,4 +68,31 @@
             </div>
         </div>
     </div>
+    {{-- Modal Crear --}}
+    @if ($showModal)
+        <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+            <div class="py-12">
+                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+                        <form wire:submit="save">
+                            <div class="mb-4">
+                                <x-label class="">Nombre</x-label>
+                                <x-input wire:model="name" class="w-full" />
+                            </div>
+                            <div class="flex justify-end">
+                                <x-primary-button class="mr-2">
+                                    Confirmar
+                                </x-primary-button>
+                                <x-danger-button wire:click="closeModal">
+                                    Cancelar
+                                </x-danger-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+@endif
+
 </div>

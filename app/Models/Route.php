@@ -11,7 +11,7 @@ class Route extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillabe = [
+    protected $fillable = [
         'name',
         'service_day',
         'departure_time',

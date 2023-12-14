@@ -13,11 +13,9 @@ class BusStop extends Model
 
     protected $table = 'busstops';
 
-    protected $fillabe = [
+    protected $fillable = [
         'name'
     ];
-
-
 
     public function busstops()
     {

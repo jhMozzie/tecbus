@@ -9,7 +9,6 @@ use Livewire\WithPagination;
 class BusstopComponent extends Component
 {
     use WithPagination;
-    protected $table = 'busstops';
 
     public $name;
 
@@ -24,6 +23,22 @@ class BusstopComponent extends Component
 
     public function closeModal()
     {
+        $this->showModal = false;
+    }
+
+    public function save()
+    {
+        $this->validate([
+            'name' => 'required'
+        ]);
+
+        BusStop::create([
+            'name' => $this->name,
+        ]);
+
+        $this->name = '';
+
+        // Close modal
         $this->showModal = false;
     }
 

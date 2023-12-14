@@ -168,6 +168,9 @@
                         </form>
                     </div>
                 </div>
+                <div class="mt-4">
+                    {{ $routes->links() }}
+                </div>
             </div>
         </div>
     @endif
