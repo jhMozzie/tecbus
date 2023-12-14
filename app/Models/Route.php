@@ -22,4 +22,8 @@ class Route extends Model
     {
         return $this->belongsToMany(Busstop::class, 'route_busstop');
     }
+
+    public function trips(){
+        return $this->hasOne(Trip::class);
+    }
 }

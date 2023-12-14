@@ -18,4 +18,8 @@ class Bus extends Model
     {
         return $this->belongsToMany(Driver::class, 'bus_drivers');
     }
+
+    public function trips(){
+        return $this->hasOne(Trip::class);
+    }
 }
