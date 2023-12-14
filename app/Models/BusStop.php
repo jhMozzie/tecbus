@@ -11,6 +11,8 @@ class BusStop extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = 'busstops';
+
     protected $fillabe = [
         'name'
     ];
