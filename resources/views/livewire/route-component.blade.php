@@ -97,7 +97,7 @@
                                             </button>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
-                                            <button wire:click="editRoute({{ $route->id }})"
+                                            <button wire:click="edit({{ $route->id }})"
                                                 class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-indigo-500" <svg width="24" height="24"
@@ -109,7 +109,8 @@
                                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                                                 </svg>
                                             </button>
-                                            <button class="text-red-600 hover:text-red-900 focus:outline-none">
+                                            <button wire:click="destroy({{ $route->id }})"
+                                                class="text-red-600 hover:text-red-900 focus:outline-none">
                                                 <!-- Add your delete icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -184,6 +185,59 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    @endif
+
+    {{-- Modal Edit --}}
+    @if ($showEditModal)
+        <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+            <div class="py-12">
+                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+                        <form wire:submit="update">
+                            <!-- Agrega aquí los campos de edición según tus necesidades -->
+                            <div class="mb-4">
+                                <x-label>Nombre</x-label>
+                                <x-input wire:model="name" class="w-full" />
+                            </div>
+                            <div class="mb-4">
+                                <x-label>Día de servicio</x-label>
+                                <x-input wire:model="service_day" class="w-full" />
+                            </div>
+                            <div class="mb-4">
+                                <x-label>Hora de partida</x-label>
+                                <x-input wire:model="departure_time" class="w-full" />
+                            </div>
+                            <div class="mb-4">
+                                <x-label>Turno</x-label>
+                                <x-select wire:model="turn" class="w-full">
+                                    <option value="" disabled selected>Selecciona un turno</option>
+                                    @foreach ($enumOptions['turn'] as $option)
+                                        <option value="{{ $option }}">{{ $option }}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+                            <div class="mb-8">
+                                <x-label>Dirección</x-label>
+                                <x-select wire:model="direction" class="w-full">
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    @foreach ($enumOptions['direction'] as $option)
+                                        <option value="{{ $option }}">{{ $option }}</option>
+                                    @endforeach
+                                </x-select>
+                            </div>
+                            <div class="flex justify-end">
+                                <x-primary-button class="mr-2">
+                                    Actualizar
+                                </x-primary-button>
+                                <x-danger-button wire:click="closeEditModal">
+                                    Cancelar
+                                </x-danger-button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     @endif
