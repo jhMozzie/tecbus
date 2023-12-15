@@ -131,7 +131,7 @@
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Fecha</label>
-                            <input type="date" id="create-trip_date" class="w-full" wire:model="trip_date">
+                            <input type="datetime-local" id="create-trip_date" class="w-full" wire:model="trip_date">
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('trip_date')"/>
                         </div>

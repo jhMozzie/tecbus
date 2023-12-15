@@ -1,41 +1,5 @@
 <div>
-    {{-- Lista de posts --}}
 
-    <div class="bg-white shadow rounded-lg p-6">
-        <ul class="list-disc list-inside space-y-2">
-            {{-- boton crear --}}
-            <x-primary-button wire:click="crear">Crear</x-primary-button>
-            {{-- boton selecionar --}}
-            <div class="relative">
-                <select
-                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                    wire:model.live="buscapor">
-                    <option value="model">modelo</option>
-                    <option value="soat">soat</option>
-                    <option value="capacity">capacidad</option>
-                    <option value="brand">marca</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path d="M5 7l5 5 5-5z" />
-                    </svg>
-                </div>
-            </div>
-            {{-- buscar por --}}
-            <input type="text" class="form-control w-full" placeholder="Buscar... " wire:model.live="search">
-            @foreach ($buses as $bus)
-                <li class="flex justify-between" wire:key="post-{{ $bus->id }}"> {{ $bus->model }}
-                    <div>
-                        <x-primary-button wire:click="edit({{ $bus->id }})">Editar</x-primary-button>
-                        <x-primary-button wire:click="destroy({{ $bus->id }})">Eliminar</x-primary-button>
-                    </div>
-                </li>
-            @endforeach
-        </ul>
-        <div class="mt-4">
-            {{ $buses->links() }}
-        </div>
-    </div>
 
     {{-- Table --}}
     <div class="bg-white shadow rounded-lg p-6">
