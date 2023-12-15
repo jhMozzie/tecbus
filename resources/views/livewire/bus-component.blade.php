@@ -40,7 +40,7 @@
     {{-- Table --}}
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex flex-col ">
-            <h2 class="text-3xl font-semibold mb-2">Lista de Rutas </h2>
+            <h2 class="text-3xl font-semibold mb-2">Lista de Buses </h2>
             <div class="flex flex-row justify-between mb-4 ">
                 <div>
                     <button wire:click="crear"
@@ -274,7 +274,7 @@
                                 <div class="flex justify-end">
                                     <button type="button" class="mr-2"
                                         wire:click="set('open', false)">Cancelar</button>
-                                    <x-primary-button>Crear</x-primary-button>
+                                    <x-primary-button>Actualizar</x-primary-button>
                                 </div>
                             </div>
                         </form>

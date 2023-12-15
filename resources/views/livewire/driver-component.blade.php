@@ -86,7 +86,7 @@
     {{-- Table --}}
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex flex-col ">
-            <h2 class="text-3xl font-semibold mb-2">Lista de Rutas </h2>
+            <h2 class="text-3xl font-semibold mb-2">Lista de Conductores </h2>
             <div class="flex flex-row justify-between mb-4 ">
                 <div>
                     <button wire:click="crear"

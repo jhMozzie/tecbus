@@ -15,7 +15,7 @@ class TripComponent extends Component
     use WithPagination;
         //variable para buscar
         public $search;
-        public $buscapor = "route_id";
+        public $buscapor = "name";
     // datos a completar en el formulario crear
         public $trip_date,$route_id = "",$bus_id="",$student_capacity = 35 ,$professor_capacity = 5	;
     
@@ -125,8 +125,16 @@ class TripComponent extends Component
 
     public function render()
     {
-        $trips = Trip::where($this->buscapor,'like','%'.$this->search.'%')->paginate(3);
+        $trips = Trip::where(function($query) {
+            $query->whereHas('route', function($subquery) {
+                    $subquery->where('name', 'like', '%' . $this->search . '%');
+                })
+                ->orWhereHas('bus', function($subquery) {
+                    $subquery->where('license_plate', 'like', '%' . $this->search . '%');
+                });
+        })
+        ->paginate(3);
 
-        return view('livewire.trip-component',compact('trips'));
+    return view('livewire.trip-component', compact('trips'));
     }
 }
