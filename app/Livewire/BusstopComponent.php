@@ -11,16 +11,19 @@ class BusstopComponent extends Component
     use WithPagination;
 
     public $name;
-
-    public $busstopid;
-
     public $selectedBusstopId;
-
-    //* Open Create Modal
     public $showCreateModal = false;
+    public $showEditModal = false;
+
+    public function render()
+    {
+        $busstops = BusStop::paginate(10);
+        return view('livewire.busstop-component', compact('busstops'));
+    }
 
     public function openCreateModal()
     {
+        $this->resetForm();
         $this->showCreateModal = true;
     }
 
@@ -29,26 +32,20 @@ class BusstopComponent extends Component
         $this->showCreateModal = false;
     }
 
-    //* Open Edit Modal
-    public $showEditModal = false;
-
-    public function openEditModal($busstopid)
+    public function edit($busstopid)
     {
+        $this->resetForm();
         $this->showEditModal = true;
         $this->selectedBusstopId = $busstopid;
 
-        $busstop = Busstop::find($busstopid);
-        $this->name = $busstop->name; // Corrección: Reemplaza "$busstop->name =-" con "$busstop->name"
-
-        // Puedes también resetear la validación al abrir el modal de edición
-        $this->resetValidation();
+        $busstop = BusStop::find($busstopid);
+        $this->name = $busstop ? $busstop->name : '';
     }
 
     public function closeEditModal()
     {
         $this->showEditModal = false;
     }
-
 
     public function save()
     {
@@ -60,9 +57,7 @@ class BusstopComponent extends Component
             'name' => $this->name,
         ]);
 
-        $this->name = '';
-
-        // Close modal
+        $this->resetForm();
         $this->showCreateModal = false;
     }
 
@@ -74,16 +69,19 @@ class BusstopComponent extends Component
 
         $busstop = BusStop::find($this->selectedBusstopId);
 
-        $busstop->update([
-            'name' => $this->name
-        ]);
+        if ($busstop) {
+            $busstop->update([
+                'name' => $this->name
+            ]);
 
-        $this->showEditModal = false;
+            $this->showEditModal = false;
+        }
     }
 
-    public function delete($busstopid)
+    public function destroy($busstopid)
     {
         $busstop = BusStop::find($busstopid);
+
         if ($busstop) {
             $busstop->delete();
             session()->flash('message', 'Paradero eliminado correctamente.');
@@ -92,9 +90,8 @@ class BusstopComponent extends Component
         }
     }
 
-    public function render()
+    private function resetForm()
     {
-        $busstops = BusStop::paginate(10);
-        return view('livewire.busstop-component', compact('busstops'));
+        $this->reset(['name', 'selectedBusstopId']);
     }
 }

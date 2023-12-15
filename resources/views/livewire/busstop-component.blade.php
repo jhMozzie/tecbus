@@ -48,7 +48,7 @@
                                             <div class="text-sm font-medium text-gray-900">{{ $busstop->name }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
-                                            <button wire:click="openEditModal({{ $busstop->id }})"
+                                            <button wire:click="edit({{ $busstop->id }})"
                                                 class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-indigo-500" <svg width="24" height="24"
@@ -60,7 +60,7 @@
                                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                                                 </svg>
                                             </button>
-                                            <button wire:click="delete({{ $busstop->id }})"
+                                            <button wire:click="destroy({{ $busstop->id }})"
                                                 class="text-red-600 hover:text-red-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none"

@@ -15,7 +15,8 @@ class Route extends Model
         'name',
         'service_day',
         'departure_time',
-
+        'turn',
+        'direction'
     ];
 
     public function busstops()
@@ -23,7 +24,8 @@ class Route extends Model
         return $this->belongsToMany(Busstop::class, 'route_busstop');
     }
 
-    public function trips(){
+    public function trips()
+    {
         return $this->hasOne(Trip::class);
     }
 }
