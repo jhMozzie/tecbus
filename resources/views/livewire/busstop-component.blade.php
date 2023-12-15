@@ -27,6 +27,7 @@
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
+                            {{-- Cabecera --}}
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
@@ -47,7 +48,7 @@
                                             <div class="text-sm font-medium text-gray-900">{{ $busstop->name }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
-                                            <button wire:click="openEditModal"
+                                            <button wire:click="openEditModal({{ $busstop->id }})"
                                                 class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-indigo-500" <svg width="24" height="24"
@@ -59,7 +60,8 @@
                                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                                                 </svg>
                                             </button>
-                                            <button class="text-red-600 hover:text-red-900 focus:outline-none">
+                                            <button wire:click="delete({{ $busstop->id }})"
+                                                class="text-red-600 hover:text-red-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -117,7 +119,7 @@
             <div class="py-12">
                 <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white shadow rounded-lg p-6 mb-8">
-                        <form wire:submit="edit">
+                        <form wire:submit="update">
                             <!-- Agrega aquí los campos de edición según tus necesidades -->
                             <div class="mb-4">
                                 <x-label>Nombre</x-label>

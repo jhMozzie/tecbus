@@ -14,6 +14,7 @@ class BusstopComponent extends Component
 
     public $busstopid;
 
+    public $selectedBusstopId;
 
     //* Open Create Modal
     public $showCreateModal = false;
@@ -31,9 +32,16 @@ class BusstopComponent extends Component
     //* Open Edit Modal
     public $showEditModal = false;
 
-    public function openEditModal()
+    public function openEditModal($busstopid)
     {
         $this->showEditModal = true;
+        $this->selectedBusstopId = $busstopid;
+
+        $busstop = Busstop::find($busstopid);
+        $this->name = $busstop->name; // Corrección: Reemplaza "$busstop->name =-" con "$busstop->name"
+
+        // Puedes también resetear la validación al abrir el modal de edición
+        $this->resetValidation();
     }
 
     public function closeEditModal()
@@ -58,9 +66,30 @@ class BusstopComponent extends Component
         $this->showCreateModal = false;
     }
 
-    public function edit($busstopid)
+    public function update()
     {
-        $this->resetValidation();
+        $this->validate([
+            'name' => 'required'
+        ]);
+
+        $busstop = BusStop::find($this->selectedBusstopId);
+
+        $busstop->update([
+            'name' => $this->name
+        ]);
+
+        $this->showEditModal = false;
+    }
+
+    public function delete($busstopid)
+    {
+        $busstop = BusStop::find($busstopid);
+        if ($busstop) {
+            $busstop->delete();
+            session()->flash('message', 'Paradero eliminado correctamente.');
+        } else {
+            session()->flash('error', 'No se pudo encontrar el paradero.');
+        }
     }
 
     public function render()
