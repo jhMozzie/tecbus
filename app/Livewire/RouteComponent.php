@@ -32,23 +32,13 @@ class RouteComponent extends Component
     public $routeName;
     public $busstopsForRoute;
     public $allBusstops;
-    public $selectedBusstops = [];
-
-
-
-    // Select radio buttons
+    public $selectedRouteBusstops = [];
     public $selectedBusstopIds = [];
+    public $selectedBusstopCount = 1;
 
-    public function confirmRouteBusstops()
-    {
-        $route = Route::find($this->routeIdBeingEdited);
+    // 
+    public $selectedBusstopCounts = [];
 
-        // Sincroniza los paraderos asociados a la ruta
-        $route->busstops()->sync($this->selectedBusstopIds);
-
-        // Después de realizar las operaciones necesarias, puedes cerrar el modal
-        $this->closeRoutebusstopModal();
-    }
 
     public function mount()
     {
@@ -58,6 +48,68 @@ class RouteComponent extends Component
             'direction' =>  ['Paradero Inicial a Tecsup', 'Tecsup a Paradero Final'],
         ];
     }
+
+    public function getBusstopNameById($busstopId)
+    {
+        $busstop = BusStop::find($busstopId);
+
+        return $busstop ? $busstop->name : 'Paradero no encontrado';
+    }
+
+    public function confirmRouteBusstops()
+    {
+        // Obtén los paraderos seleccionados antes de usarlos
+        $selectedBusstops = BusStop::find($this->selectedBusstopIds);
+
+        foreach ($selectedBusstops as $busstop) {
+            $order = $this->selectedBusstopCounts[$busstop->id] ?? count($this->selectedRouteBusstops) + 1;
+
+            // Agregar o actualizar el paradero en la ruta con el orden
+            $busstop->addStopToRoute($this->routeIdBeingEdited, $order);
+
+            $this->selectedRouteBusstops[] = [
+                'id' => $busstop->id,
+                'name' => $busstop->name,
+                'order' => $order,
+            ];
+        }
+
+        // Limpiar los paraderos seleccionados
+        $this->selectedBusstopIds = [];
+
+        // Cerrar el modal o realizar cualquier otra acción necesaria
+        $this->closeRoutebusstopModal();
+
+        // Renderizar nuevamente la vista para reflejar los cambios en la lista de paraderos asociados
+        $this->render();
+    }
+
+    public function updateAllBusstopOrders()
+    {
+        $route = Route::find($this->routeIdBeingEdited);
+
+        foreach ($this->selectedBusstopCounts as $busstopId => $order) {
+            // Encuentra el paradero en la ruta
+            $busstopInRoute = $route->busstops->find($busstopId);
+
+            if ($busstopInRoute) {
+                // Actualiza el orden del paradero en la ruta
+                $busstopInRoute->pivot->update([
+                    'order' => $order,
+                ]);
+            }
+        }
+
+        // Limpiar los paraderos seleccionados
+        $this->selectedBusstopIds = [];
+
+        // Cerrar el modal o realizar cualquier otra acción necesaria
+        $this->closeRoutebusstopModal();
+
+        // Renderiza nuevamente la vista para reflejar los cambios
+        $this->render();
+    }
+
 
     public function openCreateModal()
     {
@@ -76,12 +128,23 @@ class RouteComponent extends Component
 
     public function openRoutebusstopModal($routeId)
     {
-        $this->showRoutebusstopModal = true;
         $this->routeIdBeingEdited = $routeId;
         $route = Route::find($routeId);
+
         $this->routeName = $route->name;
-        $this->busstopsForRoute = $route->busstops;
+        $this->busstopsForRoute = $route->busstops->sortBy('pivot.order'); // Ordena por el campo 'order'
         $this->allBusstops = BusStop::all();
+
+        // Obtener los paraderos seleccionados actualmente para esta ruta
+        $this->selectedBusstopIds = $this->busstopsForRoute->pluck('id')->toArray();
+        $this->selectedBusstopCounts = [];
+
+        // Obtener los contadores de paraderos asociados a la ruta
+        foreach ($this->busstopsForRoute as $busstop) {
+            $this->selectedBusstopCounts[$busstop->id] = $busstop->pivot->order;
+        }
+
+        $this->showRoutebusstopModal = true;
     }
 
     public function closeRoutebusstopModal()
@@ -89,6 +152,7 @@ class RouteComponent extends Component
         $this->showRoutebusstopModal = false;
         $this->selectedBusstopIds = []; // Reinicia los paraderos seleccionados cuando se cierra el modal
     }
+
 
     public function save()
     {
