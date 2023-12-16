@@ -19,6 +19,7 @@ class Bus extends Model
         return $this->belongsToMany(Driver::class, 'bus_drivers');
     }
 
+    //aca quitare los a trips porque ahora la coneccion es como la tabla intermedia
     public function trips(){
         return $this->hasOne(Trip::class);
     }

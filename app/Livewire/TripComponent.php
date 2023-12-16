@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Bus;
+use App\Models\BusDriver;
 use App\Models\Route;
 use App\Models\Trip;
 use Carbon\Carbon;
@@ -17,10 +18,10 @@ class TripComponent extends Component
         public $search;
         public $buscapor = "name";
     // datos a completar en el formulario crear
-        public $trip_date,$route_id = "",$bus_id="",$student_capacity = 35 ,$professor_capacity = 5	;
+        public $trip_date,$route_id = "",$bus_driver_id="",$student_capacity = 0 ,$professor_capacity = 0	;
     
         // los uso para hacer los for
-    public $routes,$buses;
+    public $routes,$buses_conductor;
 
     public $open2 =false;
     public $open =false;
@@ -29,7 +30,7 @@ class TripComponent extends Component
     public $tripid = '';
     public $tripedit = [
         'route_id' => '',
-        'bus_id' => '',
+        'bus_driver_id' => '',
         'student_capacity' => '',
         'professor_capacity' => '',
         'trip_date' => ''
@@ -46,7 +47,7 @@ class TripComponent extends Component
         $this->validate([
             'trip_date' => 'required',
             'route_id' => 'required',
-            'bus_id' => 'required',
+            'bus_driver_id' => 'required',
             'student_capacity' => 'required',
             'professor_capacity' => 'required',
         ]);
@@ -58,12 +59,12 @@ class TripComponent extends Component
         $trip = Trip::create([
             'trip_date' => $tripDate,
             'route_id' => $this->route_id,
-            'bus_id' => $this->bus_id,
+            'bus_driver_id' => $this->bus_driver_id,
             'student_capacity' => $this->student_capacity,
             'professor_capacity' => $this->professor_capacity,
         ]);
-        //$trip = Trip::create($this->only('trip_date', 'route_id', 'bus_id','student_capacity','professor_capacity'));
-        $this->reset(['trip_date', 'route_id', 'bus_id','student_capacity','professor_capacity','open2']);
+        //$trip = Trip::create($this->only('trip_date', 'route_id', 'bus_driver_id','student_capacity','professor_capacity'));
+        $this->reset(['trip_date', 'route_id', 'bus_driver_id','student_capacity','professor_capacity','open2']);
     }
 
     public function edit($id)
@@ -77,10 +78,10 @@ class TripComponent extends Component
         $this->tripid = $id;
         //dd($this->tripid);
         $this->tripedit['route_id'] = $trip->route_id;
-        $this->tripedit['bus_id'] = $trip->bus_id;
+        $this->tripedit['bus_driver_id'] = $trip->bus_driver_id;
         $this->tripedit['student_capacity'] = $trip->student_capacity;
         $this->tripedit['professor_capacity'] = $trip->professor_capacity;
-        $this->tripedit['trip_date'] = $trip->trip_date->toDateString();
+        $this->tripedit['trip_date'] = Carbon::parse($trip->trip_date)->format('Y-m-d\TH:i');
 
     }
 
@@ -91,7 +92,7 @@ class TripComponent extends Component
     // Validadores para los campos de actualización
     $this->validate([
         'tripedit.route_id' => 'required',
-        'tripedit.bus_id' => 'required',
+        'tripedit.bus_driver_id' => 'required',
         'tripedit.student_capacity' => 'required',
         'tripedit.professor_capacity' => 'required',
         'tripedit.trip_date' => 'required', // Aseguramos que sea una fecha válida
@@ -101,7 +102,7 @@ class TripComponent extends Component
     // Actualizamos los campos
     $trip->update([
         'route_id' => $this->tripedit['route_id'],
-        'bus_id' => $this->tripedit['bus_id'],
+        'bus_driver_id' => $this->tripedit['bus_driver_id'],
         'student_capacity' => $this->tripedit['student_capacity'],
         'professor_capacity' => $this->tripedit['professor_capacity'],
         'trip_date' => Carbon::parse($this->tripedit['trip_date']), // Convertimos a objeto Carbon
@@ -120,21 +121,40 @@ class TripComponent extends Component
     public function mount()
     {
         $this->routes = Route::all();
-        $this->buses = Bus::all();
+        $this->buses_conductor = BusDriver::all();
     }
 
     public function render()
     {
-        $trips = Trip::where(function($query) {
-            $query->whereHas('route', function($subquery) {
-                    $subquery->where('name', 'like', '%' . $this->search . '%');
-                })
-                ->orWhereHas('bus', function($subquery) {
-                    $subquery->where('license_plate', 'like', '%' . $this->search . '%');
+        $query = Trip::query();
+    
+        if ($this->search) {
+            if ($this->buscapor === 'name') {
+                // Búsqueda por nombre de la ruta
+                $query->whereHas('route', function ($routeQuery) {
+                    $routeQuery->where('name', 'like', '%' . $this->search . '%');
                 });
-        })
-        ->paginate(3);
-
-    return view('livewire.trip-component', compact('trips'));
+            } elseif ($this->buscapor === 'license_plate') {
+                // Búsqueda por placa del bus
+                $query->whereHas('busdriver.bus', function ($busQuery) {
+                    $busQuery->where('license_plate', 'like', '%' . $this->search . '%');
+                });
+            } elseif ($this->buscapor === 'driver_name') {
+                // Búsqueda por nombre del chofer
+                $query->whereHas('busdriver.driver', function ($driverQuery) {
+                    $driverQuery->where('name', 'like', '%' . $this->search . '%');
+                });
+            } elseif ($this->buscapor === 'driver_lastname') {
+                // Búsqueda por nombre del chofer
+                $query->whereHas('busdriver.driver', function ($driverQuery) {
+                    $driverQuery->where('lastname', 'like', '%' . $this->search . '%');
+                });
+            }
+        }
+    
+        $trips = $query->paginate(9);
+    
+        return view('livewire.trip-component', compact('trips'));
     }
+    
 }
