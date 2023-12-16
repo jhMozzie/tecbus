@@ -86,7 +86,8 @@
                                             {{ $route->turn }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
-                                            <button class="text-blue-600 hover:text-blue-900 focus:outline-none">
+                                            <button wire:click="openRoutebusstopModal({{ $route->id }})"
+                                                class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
                                                 <svg class="h-8 w-8 text-orange-500" viewBox="0 0 24 24" fill="none"
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -241,6 +242,62 @@
             </div>
         </div>
     @endif
+
+    {{--  Busstops Modal  --}}
+    <!-- Muestra los paraderos asociados a la ruta seleccionada -->
+
+    @if ($showRoutebusstopModal)
+        <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+            <div class="py-12">
+                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+                        <h1>Ruta ID: {{ $routeIdBeingEdited }}</h1>
+
+                        <div class="mt-4">
+                            <h2>Paraderos Asociados:</h2>
+                            <ul>
+                                @foreach ($selectedBusstops as $selectedBusstop)
+                                    <li>{{ $selectedBusstop->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="mt-4">
+                            <h2>Selecciona Paraderos:</h2>
+                            <ul>
+                                @foreach ($allBusstops as $busstop)
+                                    <li>
+                                        <input type="checkbox" wire:model="selectedBusstops"
+                                            value="{{ $busstop->id }}">
+                                        {{ $busstop->name }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+                                <input checked id="bordered-radio-2" type="radio" value=""
+                                    name="bordered-radio"
+                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="bordered-radio-2"
+                                    class="w-full py-4 ms-2 text-sm font-medium text-b dark:text-gray-300">Checked
+                                    state</label>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-end">
+                            <button wire:click="confirmRouteBusstops"
+                                class="px-4 py-2 bg-green-500 text-white rounded">Confirmar</button>
+                            <button wire:click="closeRoutebusstopModal"
+                                class="px-4 py-2 bg-red-500 text-white rounded ml-2">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    <!-- ... -->
 
 
 </div>

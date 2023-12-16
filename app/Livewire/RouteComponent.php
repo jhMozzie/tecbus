@@ -2,13 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Models\BusStop;
 use App\Models\Route;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class RouteComponent extends Component
 {
-
     use WithPagination;
 
     public $name;
@@ -20,14 +20,35 @@ class RouteComponent extends Component
     // Enums Variable
     public $enumOptions = [];
 
-    // Create Routes Variable
-    // public $routes;
-
     public $showCreateModal = false;
     public $showEditModal = false;
 
-    // Edit Variables
     public $routeIdBeingEdited;
+
+    // RouteBusstop Variables
+    public $routebusstops;
+    public $showRoutebusstopModal = false;
+    public $routebusstopId;
+    public $routeName;
+    public $busstopsForRoute;
+    public $allBusstops;
+    public $selectedBusstops = [];
+
+
+
+    // Select radio buttons
+    public $selectedBusstopIds = [];
+
+    public function confirmRouteBusstops()
+    {
+        $route = Route::find($this->routeIdBeingEdited);
+
+        // Sincroniza los paraderos asociados a la ruta
+        $route->busstops()->sync($this->selectedBusstopIds);
+
+        // Después de realizar las operaciones necesarias, puedes cerrar el modal
+        $this->closeRoutebusstopModal();
+    }
 
     public function mount()
     {
@@ -37,7 +58,6 @@ class RouteComponent extends Component
             'direction' =>  ['Paradero Inicial a Tecsup', 'Tecsup a Paradero Final'],
         ];
     }
-
 
     public function openCreateModal()
     {
@@ -54,11 +74,24 @@ class RouteComponent extends Component
         $this->showEditModal = false;
     }
 
+    public function openRoutebusstopModal($routeId)
+    {
+        $this->showRoutebusstopModal = true;
+        $this->routeIdBeingEdited = $routeId;
+        $route = Route::find($routeId);
+        $this->routeName = $route->name;
+        $this->busstopsForRoute = $route->busstops;
+        $this->allBusstops = BusStop::all();
+    }
+
+    public function closeRoutebusstopModal()
+    {
+        $this->showRoutebusstopModal = false;
+        $this->selectedBusstopIds = []; // Reinicia los paraderos seleccionados cuando se cierra el modal
+    }
 
     public function save()
     {
-        // dd($this->turn);
-
         $this->validate([
             'name' => 'required',
             'service_day' => 'required',
@@ -66,8 +99,6 @@ class RouteComponent extends Component
             'turn' => 'required',
             'direction' => 'required',
         ]);
-
-        // dd($this->name, $this->enumOptions['service_day'][0], $this->departure_time, $this->turn, $this->direction);
 
         Route::create([
             'name' => $this->name,
@@ -77,17 +108,12 @@ class RouteComponent extends Component
             'direction' => $this->direction,
         ]);
 
-        // dd($this->name, $this->enumOptions['service_day'][0], $this->departure_time, $this->turn, $this->direction);
-
-
-        // Puedes reiniciar las propiedades después de guardar
         $this->name = '';
         $this->service_day = '';
         $this->departure_time = '';
         $this->turn = '';
         $this->direction = '';
 
-        // Close modal
         $this->showCreateModal = false;
     }
 
@@ -97,14 +123,12 @@ class RouteComponent extends Component
         $this->showEditModal = true;
         $route = Route::find($routeid);
 
-        // Configurar las propiedades con los valores del modelo
         $this->name = $route->name;
         $this->service_day = $route->service_day;
         $this->departure_time = $route->departure_time;
         $this->turn = $route->turn;
         $this->direction = $route->direction;
 
-        // Guardar el ID del modelo para su posterior uso en el método update
         $this->routeIdBeingEdited = $route->id;
     }
 
@@ -118,7 +142,6 @@ class RouteComponent extends Component
             'direction' => 'required',
         ]);
 
-
         $route = Route::find($this->routeIdBeingEdited);
 
         if ($route) {
@@ -130,14 +153,10 @@ class RouteComponent extends Component
                 'direction' => $this->direction,
             ]);
 
-            // Limpiar variables después de la actualización
             $this->reset([
                 'name', 'service_day', 'departure_time', 'turn', 'direction', 'routeIdBeingEdited'
             ]);
 
-            // $this->emit('routeUpdated');
-
-            // Cerrar el modal de edición
             $this->showEditModal = false;
         }
     }
@@ -148,11 +167,6 @@ class RouteComponent extends Component
 
         if ($route) {
             $route->delete();
-
-            // También puedes emitir un evento Livewire aquí si es necesario
-            // $this->emit('routeDeleted');
-
-            // Recargar la lista de rutas después de borrar
             $this->render();
         }
     }
@@ -160,6 +174,9 @@ class RouteComponent extends Component
     public function render()
     {
         $routes = Route::paginate(5);
-        return view('livewire.route-component', compact('routes'));
+        $selectedRouteBusstops = $this->routeIdBeingEdited ? Route::find($this->routeIdBeingEdited)->busstops : collect();
+        $allBusstops = BusStop::all();
+
+        return view('livewire.route-component', compact('routes', 'selectedRouteBusstops', 'allBusstops'));
     }
 }

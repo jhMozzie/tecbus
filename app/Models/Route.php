@@ -21,7 +21,7 @@ class Route extends Model
 
     public function busstops()
     {
-        return $this->belongsToMany(Busstop::class, 'route_busstop');
+        return $this->belongsToMany(BusStop::class, 'bus_route')->withPivot('order');
     }
 
     public function trips()
