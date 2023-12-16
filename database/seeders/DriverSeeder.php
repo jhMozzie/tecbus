@@ -14,9 +14,9 @@ class DriverSeeder extends Seeder
      */
     public function run(): void
     {
-        Driver::create(
+        DB::table('drivers')->insert([
             [
-                'dni' => '87654000', // Puedes ajustar este valor según tus necesidades
+                'dni' => '87654000',
                 'name' => 'Alan',
                 'lastname' => 'García',
                 'phone' => '999999000',
@@ -26,7 +26,7 @@ class DriverSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'dni' => '87654001', // Puedes ajustar este valor según tus necesidades
+                'dni' => '87654001',
                 'name' => 'Pedro',
                 'lastname' => 'Castillo',
                 'phone' => '999999001',
@@ -36,7 +36,7 @@ class DriverSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'dni' => '87654002', // Puedes ajustar este valor según tus necesidades
+                'dni' => '87654002',
                 'name' => 'Ollanta',
                 'lastname' => 'Humala',
                 'phone' => '999999002',
@@ -46,7 +46,7 @@ class DriverSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'dni' => '87654003', // Puedes ajustar este valor según tus necesidades
+                'dni' => '87654003',
                 'name' => 'Alejandro',
                 'lastname' => 'Toledo',
                 'phone' => '999999003',
@@ -54,8 +54,7 @@ class DriverSeeder extends Seeder
                 'license_type' => 'A-IIA',
                 'created_at' => now(),
                 'updated_at' => now(),
-            ]
-
-        );
+            ],
+        ]);
     }
 }
