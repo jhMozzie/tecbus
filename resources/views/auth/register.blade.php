@@ -1,8 +1,14 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-
-        <div class="flex mt-4">
+<div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-5xl lg:w-screen">
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <div class="lg:w-1/2 w-full py-16 px-16 pr-16 pl-16">
+            <a href="/" wire:navigate class="flex items-center justify-center py-4">
+                <x-application-logo class="w-20 h-20 fill-current text-sky-600 " />
+            </a>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="flex mt-4">
             <div class="w-full md:w-1/2 mr-2">
                 <x-input-label for="name" :value="__('Nombre')" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
@@ -60,15 +66,19 @@
             <x-input-error :messages="$errors->first('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+                <div class="py-4">
+                    <button class="bg-sky-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-sky-400">{{ __('Registrarse') }}</button>
+                </div>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
+                    <div class="flex items-center justify-center p-4">
+                        <p class="lg:text-m text-gray-600 text-center">¿Ya tienes una cuenta?</p>
+                        <a class="toggleColour inline-block text-sky-600 no-underline hover:text-sky-300 hover:text-underline py-2 px-4" href="{{ route('login') }}" wire:navigate>
+                        {{ __('Iniciar sesión') }}
+                        </a>
+                    </div>
+
+            </form>
         </div>
-    </form>
+        <div class="hidden lg:block lg:w-1/2 bg-cover bg-[url('/public/img/bus-stop.png')]"></div>
+    </div>
 </x-guest-layout>
