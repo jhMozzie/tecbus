@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bus_stop_id')->constrained('busstops');
             $table->foreignId('route_id')->constrained('routes');
-            $table->unsignedInteger('order');
+            $table->unsignedInteger('order')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
