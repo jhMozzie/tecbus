@@ -9,8 +9,11 @@ class UserType extends Model
 {
     use HasFactory;
 
-    public function users()
-    {
+    protected $fillable = ['name'];
+    
+    public function posts()
+    {   
         return $this->hasOne(User::class);
     }
+
 }

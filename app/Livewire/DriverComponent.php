@@ -11,8 +11,8 @@ class DriverComponent extends Component
         //si no tiene el esto la paginacion te dara muchos errores es para hacer que sea dinamico 
     use WithPagination;
         //variable para buscar
-        public $search;
-        public $buscapor = "dni";
+    public $search;
+    public $buscapor = "dni";
     // atribustods para el crear 
     public $dni,$name,$lastname,$phone,$license_number,$license_type;
     // 
