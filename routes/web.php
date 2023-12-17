@@ -67,8 +67,9 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['type:Profesor'])->group(function () {
         Route::view('/Profesor/dashboard', 'profesor.profesor_dashboard')->name("Profesor.dashboard");
+        Route::view('/profesor/trip', 'profesor.trip')->name("/profesor/trip");
     });
-
+ 
     Route::middleware(['type:Chofer'])->group(function () {
         Route::view('/Chofer/dashboard', 'chofer.chofer_dashboard')->name("Chofer.dashboard");
     });
