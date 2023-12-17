@@ -99,8 +99,16 @@ class UserComponent extends Component
     }
 
     public function render()
-    {   
-        $users = User::where($this->buscapor, 'like', '%' . $this->search . '%')->paginate(10);
-        return view('livewire.user-component',compact('users'));
+    {
+        $users = User::when($this->buscapor == 'user_type', function ($query) {
+                $query->whereHas('userType', function ($subQuery) {
+                    $subQuery->where('name', 'like', '%' . $this->search . '%');
+                });
+            }, function ($query) {
+                $query->where($this->buscapor, 'like', '%' . $this->search . '%');
+            })
+            ->paginate(10);
+    
+        return view('livewire.user-component', compact('users'));
     }
 }

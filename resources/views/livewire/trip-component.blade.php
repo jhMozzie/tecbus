@@ -19,7 +19,7 @@
                     </button>    
                 </div>               
             </div>
-            <div>
+            {{-- <div>
             <div class="grid grid-cols-1 md:grid-cols-2 py-4">
                 <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbuffer.com%2Flibrary%2Ffree-images%2F&psig=AOvVaw2pMg6MO7K7Sm00SbfnJzoa&ust=1702885700953000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMDygdz9lYMDFQAAAAAdAAAAABAE" alt="">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+            </div> --}}
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
