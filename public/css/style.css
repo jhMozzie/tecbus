@@ -7,15 +7,10 @@
     height: auto
 }
 
-svg {
+.svg {
     width: 2rem;
     height: 2rem;
     fill: #fbbf24;
 
 }
 
-.wrapper{
-    width:200px;
-    padding:20px;
-    height: 150px;
-    }
