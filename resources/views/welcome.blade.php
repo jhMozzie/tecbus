@@ -35,7 +35,7 @@
           </button>
         </div>
         @if (Route::has('login'))
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20 xl:text-base" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
             @auth
             <li class="mr-3">
@@ -63,8 +63,8 @@
         <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <!--Left Col-->
             <div class="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left">
-                <p class="uppercase tracking-loose w-full">SERVICIO DE TRANSPORTE</p>
-                <h1 class="my-4 text-5xl font-bold leading-tight">
+                <p class="uppercase tracking-loose w-full lg:text-xl">SERVICIO DE TRANSPORTE</p>
+                <h1 class="my-4 text-5xl font-bold leading-tight lg:text-4xl">
                 ¡Realiza tu reserva para viajar cómodo!
                 </h1>
                 <p class="leading-normal text-2xl">
@@ -83,7 +83,7 @@
             </div>
           </div>
         </div>
-    <div class="relative -mt-12 lg:-mt-24">
+        <div class="relative -mt-12 lg:-mt-24 w-full">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
           <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -126,7 +126,7 @@
       </div>
     </section>
         <section class="bg-gray-50 border-b py-8" id="m_reservas" >
-      <div class="container mx-auto flex flex-wrap pt-4 pb-12">
+      <div class="container mx-auto flex flex-wrap pt-4 pb-12 w-full">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         Reservas
         </h2>

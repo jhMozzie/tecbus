@@ -11,8 +11,8 @@ class DriverComponent extends Component
         //si no tiene el esto la paginacion te dara muchos errores es para hacer que sea dinamico 
     use WithPagination;
         //variable para buscar
-        public $search;
-        public $buscapor = "dni";
+    public $search;
+    public $buscapor = "dni";
     // atribustods para el crear 
     public $dni,$name,$lastname,$phone,$license_number,$license_type;
     // 
@@ -107,7 +107,6 @@ class DriverComponent extends Component
 
     public function render()
     {
-
         $drivers = Driver::where($this->buscapor,'like','%'.$this->search.'%')->paginate(10);
         return view('livewire.driver-component',compact('drivers'));
     }

@@ -57,17 +57,21 @@ Route::middleware('auth')->group(function () {
         Route::view('/admin/route', 'admin.route')->name("/admin/route");
         Route::view('/admin/busstop', 'admin.busstop')->name("/admin/busstop");
         Route::view('/admin/trip', 'admin.trip')->name("/admin/trip");
+        Route::view('/admin/user', 'admin.user')->name("/admin/user");
+        Route::view('/admin/user_type', 'admin.user_type')->name("/admin/user_type");
         Route::view('/Administrador/dashboard', 'admin.admin_dashboard')->name("Administrador.dashboard");
     });
 
     Route::middleware(['type:Estudiante'])->group(function () {
         Route::view('/Estudiante/dashboard', 'estudiante.estudiante_dashboard')->name("Estudiante.dashboard");
+        Route::view('/estudiante/trip', 'estudiante.trip')->name("/estudiante/trip");
     });
 
     Route::middleware(['type:Profesor'])->group(function () {
         Route::view('/Profesor/dashboard', 'profesor.profesor_dashboard')->name("Profesor.dashboard");
+        Route::view('/profesor/trip', 'profesor.trip')->name("/profesor/trip");
     });
-
+ 
     Route::middleware(['type:Chofer'])->group(function () {
         Route::view('/Chofer/dashboard', 'chofer.chofer_dashboard')->name("Chofer.dashboard");
     });

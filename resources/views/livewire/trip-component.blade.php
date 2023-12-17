@@ -1,17 +1,8 @@
 <div>
-
-
     {{-- Table --}}
-    <div class="bg-white shadow rounded-lg p-6">
-        <div class="flex flex-col ">
-            <h2 class="text-3xl font-semibold mb-2">Lista de Viajes </h2>
-            <div class="flex flex-row justify-between mb-4 ">
-                <div>
-                    <button wire:click="crear"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >
-                        Agregar
-                    </button>
-                </div>
+    <div class="bg-white shadow rounded-lg p-6 w-full">
+        <div class="flex flex-col">
+            <div class="flex flex-row justify-between mb-4 py-4 ">
                 <div class="flex">
                     <select class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
                         <option value="name">Ruta</option>
@@ -20,7 +11,24 @@
                         <option value="driver_lastname">Chofer - Apellido</option>
                     </select>
                     <input type="text" class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
-                </div>                
+                </div> 
+                <div>
+                    <button wire:click="crear"
+                        class="bg-sky-500 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded lg:text-base" >
+                        Agregar
+                    </button>    
+                </div>               
+            </div>
+            <div>
+            <div class="grid grid-cols-1 md:grid-cols-2 py-4">
+                <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbuffer.com%2Flibrary%2Ffree-images%2F&psig=AOvVaw2pMg6MO7K7Sm00SbfnJzoa&ust=1702885700953000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCMDygdz9lYMDFQAAAAAdAAAAABAE" alt="">
+                    <div class="flex flex-col justify-between p-4 leading-normal">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                    </div>
+                </div>
+            </div>
             </div>
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

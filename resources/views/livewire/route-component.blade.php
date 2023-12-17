@@ -2,14 +2,7 @@
     {{-- Table --}}
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex flex-col ">
-            <h2 class="text-3xl font-semibold mb-4">Lista de Rutas </h2>
-            <div class="flex flex-row justify-between mb-4 ">
-                <div>
-                    <button wire:click="openCreateModal"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Agregar
-                    </button>
-                </div>
+            <div class="flex flex-row justify-between mb-4 py-4">
                 <div class="flex">
                     <select
                         class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none">
@@ -21,6 +14,12 @@
                     <input type="text"
                         class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none"
                         placeholder="Buscar...">
+                </div>
+                <div>
+                    <button wire:click="crear"
+                        class="bg-sky-500 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded lg:text-base" >
+                        Agregar
+                    </button>    
                 </div>
             </div>
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -89,39 +88,19 @@
                                             <button wire:click="openRoutebusstopModal({{ $route->id }})"
                                                 class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
-                                                <svg class="h-8 w-8 text-orange-500" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <circle cx="11" cy="11" r="8" />
-                                                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                                                </svg>
+                                                <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120q-17 0-28.5-11.5T200-160v-82q-18-20-29-44.5T160-340v-380q0-83 77-121.5T480-880q172 0 246 37t74 123v380q0 29-11 53.5T760-242v82q0 17-11.5 28.5T720-120h-40q-17 0-28.5-11.5T640-160v-40H320v40q0 17-11.5 28.5T280-120h-40Zm0-440h480v-120H240v120Zm100 240q25 0 42.5-17.5T400-380q0-25-17.5-42.5T340-440q-25 0-42.5 17.5T280-380q0 25 17.5 42.5T340-320Zm280 0q25 0 42.5-17.5T680-380q0-25-17.5-42.5T620-440q-25 0-42.5 17.5T560-380q0 25 17.5 42.5T620-320Z"/></svg>
                                             </button>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
                                             <button wire:click="edit({{ $route->id }})"
                                                 class="text-blue-600 hover:text-blue-900 focus:outline-none">
                                                 <!-- Add your edit icon here, e.g., Edit Icon from Tailwind -->
-                                                <svg class="h-8 w-8 text-indigo-500" <svg width="24" height="24"
-                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                                                    fill="none" stroke="currentColor" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round">
-                                                    <path
-                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                                </svg>
+                                                <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M420.182-384Q405-384 394.5-394.297q-10.5-10.298-10.5-25.52v-86.856Q384-521 389-534q5-13 15.659-23.659L738-891q11-11 24-16t26.5-5q14.4 0 27.45 5 13.05 5 23.991 15.783L891-840q11 11 16 24.182 5 13.182 5 26.818 0 13.661-5.022 26.866Q901.957-748.929 891-738L557.659-404.659Q547-394 534.05-389q-12.949 5-27.239 5h-86.629ZM789-738l51-51-51-51-51 51 51 51ZM216-144q-29.7 0-50.85-21.15Q144-186.3 144-216v-528q0-30.112 21-51.556T216-816h346L333-587q-11 11-16 23.98t-5 27.302v152.178Q312-354 333.106-333q21.105 21 50.743 21H535.63q14.37 0 27.37-5 13-5 24-16l229-229v346q0 29.7-21.15 50.85Q773.7-144 744-144H216Z"/></svg>
                                             </button>
                                             <button wire:click="destroy({{ $route->id }})"
                                                 class="text-red-600 hover:text-red-900 focus:outline-none">
                                                 <!-- Add your delete icon here, e.g., Edit Icon from Tailwind -->
-                                                <svg class="h-8 w-8 text-red-500" viewBox="0 0 24 24" fill="none"
-                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                    stroke-linejoin="round">
-                                                    <polyline points="3 6 5 6 21 6" />
-                                                    <path
-                                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                    <line x1="10" y1="11" x2="10" y2="17" />
-                                                    <line x1="14" y1="11" x2="14" y2="17" />
-                                                </svg>
+                                                <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="20"><path d="M312-144q-29.7 0-50.85-21.15Q240-186.3 240-216v-480h-12q-15.3 0-25.65-10.289-10.35-10.29-10.35-25.5Q192-747 202.35-757.5 212.7-768 228-768h156v-12q0-15.3 10.35-25.65Q404.7-816 420-816h120q15.3 0 25.65 10.35Q576-795.3 576-780v12h156q15.3 0 25.65 10.289 10.35 10.29 10.35 25.5Q768-717 757.65-706.5 747.3-696 732-696h-12v479.566Q720-186 698.85-165 677.7-144 648-144H312Zm107.789-144Q435-288 445.5-298.35 456-308.7 456-324v-264q0-15.3-10.289-25.65-10.29-10.35-25.5-10.35Q405-624 394.5-613.65 384-603.3 384-588v264q0 15.3 10.289 25.65 10.29 10.35 25.5 10.35Zm120 0Q555-288 565.5-298.35 576-308.7 576-324v-264q0-15.3-10.289-25.65-10.29-10.35-25.5-10.35Q525-624 514.5-613.65 504-603.3 504-588v264q0 15.3 10.289 25.65 10.29 10.35 25.5 10.35Z"/></svg>
                                             </button>
                                         </td>
                                     </tr>

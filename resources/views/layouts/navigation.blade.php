@@ -19,6 +19,11 @@
                                     {{ __('Dashboard') }}
                                 </x-nav-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route('/estudiante/trip')" :active="request()->routeIs('/estudiante/trip')" wire:navigate>
+                                    Estudiante viajes y reserva
+                                </x-nav-link>
+                            </div>
                         @break
 
                         @case('Profesor')
@@ -27,12 +32,22 @@
                                     {{ __('Dashboard') }}
                                 </x-nav-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route('/profesor/trip')" :active="request()->routeIs('/profesor/trip')" wire:navigate>
+                                    Profesor viajes y reserva
+                                </x-nav-link>
+                            </div>
                         @break
 
                         @case('Administrador')
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                                     {{ __('Dashboard') }}
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route('/admin/trip')" :active="request()->routeIs('/admin/trip')" wire:navigate>
+                                    Viajes
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -46,13 +61,13 @@
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link :href="route('/admin/trip')" :active="request()->routeIs('/admin/trip')" wire:navigate>
-                                    Viajes
+                                <x-nav-link :href="route('/admin/user')" :active="request()->routeIs('/admin/user')" wire:navigate>
+                                    Usuarios
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link :href="route('/admin/route')" :active="request()->routeIs('/admin/user')" wire:navigate>
-                                    Usuarios
+                                <x-nav-link :href="route('/admin/user_type')" :active="request()->routeIs('/admin/user_type')" wire:navigate>
+                                    Tipo de usuarios
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

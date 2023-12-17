@@ -49,12 +49,13 @@ class User extends Authenticatable
     ];
 
     public function userType()
-    {
-        return $this->belongsTo(UserType::class);
+    {   
+        return $this->belongsTo(UserType::class)->withDefault();
     }
+    
     //agreado por mi jemal
     public function boardings()
     {
-        return $this->hasMany(Boarding::class, 'user_boarding');
+        return $this->belongsToMany(Boarding::class, 'user_boarding');
     }
 }

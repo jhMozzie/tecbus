@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
 
-
-
             // Cambia de foreignId a foreign para utilizar una clave foránea
             $table->unsignedBigInteger('user_type_id');
             $table->foreign('user_type_id')->references('id')->on('user_types')->onDelete('cascade');
