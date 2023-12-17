@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                    <img id="logoImg" src="/img/logo-white.png" class="block h-9 w-auto fill-current text-white">
+                        <img id="logoImg" src="/img/logo-white.png" class="block h-9 w-auto fill-current text-white">
                     </a>
                 </div>
 
@@ -61,14 +61,29 @@
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link :href="route('/admin/user')" :active="request()->routeIs('/admin/user')" wire:navigate>
-                                    Usuarios
-                                </x-nav-link>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link :href="route('/admin/user_type')" :active="request()->routeIs('/admin/user_type')" wire:navigate>
-                                    Tipo de usuarios
-                                </x-nav-link>
+                                <x-dropdown align="left" width="48">
+                                    <x-slot name="trigger">
+                                        <button
+                                            class="group inline-flex items-center space-x-2 text-sm font-medium text-gray-500 hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                            <span>Administrar</span>
+                                            <svg class="fill-current h-4 w-4 transform group-hover:rotate-180 transition-transform duration-150"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 12l-8-8 1.5-1.5L10 9l6.5-6.5L18 4z" />
+                                            </svg>
+                                        </button>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <x-dropdown-link :href="route('/admin/user')" :active="request()->routeIs('/admin/user')" wire:navigate
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Usuarios
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('/admin/user_type')" :active="request()->routeIs('/admin/user_type')" wire:navigate
+                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                            Tipo de usuarios
+                                        </x-dropdown-link>
+                                    </x-slot>
+                                </x-dropdown>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link :href="route('/admin/driver')" :active="request()->routeIs('/admin/driver')" wire:navigate>
