@@ -247,7 +247,7 @@
     <!-- Muestra los paraderos asociados a la ruta seleccionada -->
 
     @if ($showRoutebusstopModal)
-        <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
+        <div class="bg-gray-800 bg-opacity-25 fixed inset-0 overflow-y-auto">
             <div class="py-12">
                 <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white shadow rounded-lg p-6 mb-8">

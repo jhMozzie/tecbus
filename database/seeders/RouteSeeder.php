@@ -21,42 +21,49 @@ class RouteSeeder extends Seeder
                 'departure_time' => '7:15 AM',
                 'direction' => 'Paradero Inicial a Tecsup',
                 'turn' => 'Mañana',
-            ], [
+            ],
+            [
                 'name' => 'Puente Nuevo - Campus',
                 'service_day' => 'Lunes a Viernes',
                 'departure_time' => '7:20 AM',
                 'direction' => 'Paradero Inicial a Tecsup',
                 'turn' => 'Mañana',
             ],
-            // [
-            //     'name' => 'Campus - Av. J. Prado - Ovalo La Perla',
-            //     'service_day' => 'Lunes a Viernes',
-            //     'departure_time' => '6:10 PM',
-            //     'turn' => 'Mañana',
-            // ],
-            // [
-            //     'name' => 'Campus - Chaclacayo',
-            //     'service_day' => 'Lunes a Viernes',
-            //     'departure_time' => '6:10 PM',
-            //     'turn' => 'Tarde',
-            // ],
-            // [
-            //     'name' => 'Campus - Puente Atocongo',
-            //     'service_day' => 'Lunes a Viernes',
-            //     'departure_time' => '6:10 PM',
-            //     'turn' => 'Tarde',
-            // ], [
-            //     'name' => 'Campus - Mega Plaza',
-            //     'service_day' => 'Lunes a Viernes',
-            //     'departure_time' => '6:10 PM',
-            //     'turn' => 'Tarde',
-            // ],
-            // [
-            //     'name' => 'Campus - Av. J. Prado - Petit Thouars',
-            //     'service_day' => 'Lunes a Viernes',
-            //     'departure_time' => '10:20 PM',
-            //     'turn' => 'Noche'
-            // ],
+            [
+                'name' => 'Campus - Av. J. Prado - Ovalo La Perla',
+                'service_day' => 'Lunes a Viernes',
+                'departure_time' => '6:10 PM',
+                'direction' => 'Tecsup a Paradero Final', // Ajusta según tu modelo
+                'turn' => 'Mañana',
+            ],
+            [
+                'name' => 'Campus - Chaclacayo',
+                'service_day' => 'Lunes a Viernes',
+                'departure_time' => '6:10 PM',
+                'direction' => 'Tecsup a Paradero Final', // Ajusta según tu modelo
+                'turn' => 'Tarde',
+            ],
+            [
+                'name' => 'Campus - Puente Atocongo',
+                'service_day' => 'Lunes a Viernes',
+                'departure_time' => '6:10 PM',
+                'direction' => 'Tecsup a Paradero Final', // Ajusta según tu modelo
+                'turn' => 'Tarde',
+            ],
+            [
+                'name' => 'Campus - Mega Plaza',
+                'service_day' => 'Lunes a Viernes',
+                'departure_time' => '6:10 PM',
+                'direction' => 'Tecsup a Paradero Final', // Ajusta según tu modelo
+                'turn' => 'Tarde',
+            ],
+            [
+                'name' => 'Campus - Av. J. Prado - Petit Thouars',
+                'service_day' => 'Lunes a Viernes',
+                'departure_time' => '10:20 PM',
+                'direction' => 'Tecsup a Paradero Final', // Ajusta según tu modelo
+                'turn' => 'Noche',
+            ],
         ]);
     }
 }
