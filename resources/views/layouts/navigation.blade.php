@@ -66,6 +66,11 @@
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route('/admin/user_type')" :active="request()->routeIs('/admin/user_type')" wire:navigate>
+                                    Tipo de usuarios
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link :href="route('/admin/driver')" :active="request()->routeIs('/admin/driver')" wire:navigate>
                                     Conductores
                                 </x-nav-link>
