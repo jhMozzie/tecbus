@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['type:Estudiante'])->group(function () {
         Route::view('/Estudiante/dashboard', 'estudiante.estudiante_dashboard')->name("Estudiante.dashboard");
+        Route::view('/estudiante/trip', 'estudiante.trip')->name("/estudiante/trip");
     });
 
     Route::middleware(['type:Profesor'])->group(function () {

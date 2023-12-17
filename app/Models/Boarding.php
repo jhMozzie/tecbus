@@ -9,7 +9,7 @@ class Boarding extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['confirmation'];
+    protected $fillable = ['confirmation','trip_id'];
 
     public function user()
     {

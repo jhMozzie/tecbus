@@ -19,6 +19,11 @@
                                     {{ __('Dashboard') }}
                                 </x-nav-link>
                             </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route('/estudiante/trip')" :active="request()->routeIs('/estudiante/trip')" wire:navigate>
+                                    Estudiante viajes y reserva
+                                </x-nav-link>
+                            </div>
                         @break
 
                         @case('Profesor')

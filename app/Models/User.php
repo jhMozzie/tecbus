@@ -55,6 +55,6 @@ class User extends Authenticatable
     //agreado por mi jemal
     public function boardings()
     {
-        return $this->hasMany(Boarding::class, 'user_boarding');
+        return $this->belongsToMany(Boarding::class, 'user_boarding');
     }
 }
