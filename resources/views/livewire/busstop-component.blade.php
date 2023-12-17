@@ -5,15 +5,12 @@
             <div class="flex flex-row justify-between mb-4 py-4">
                 <div class="flex">
                     <select
-                        class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none">
-                        <option>Buscar por...</option>
-                        <option>N° Licencia</option>
-                        <option>Tipo Licencia</option>
-                        <option>Edad</option>
+                        class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
+                        <option value="name">Nombre - Paradero</option>
                     </select>
                     <input type="text"
                         class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none"
-                        placeholder="Buscar...">
+                        placeholder="Buscar..." wire:model.live="search">
                 </div>
                 <button wire:click="crear"
                     class="bg-sky-500 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded lg:text-base" >

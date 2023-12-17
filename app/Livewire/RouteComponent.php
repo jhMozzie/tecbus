@@ -11,6 +11,10 @@ class RouteComponent extends Component
 {
     use WithPagination;
 
+    //variable para buscar
+    public $search;
+    public $buscapor = "name";
+
     public $name;
     public $service_day = 'Lunes a Viernes';
     public $direction = '';
@@ -216,7 +220,8 @@ class RouteComponent extends Component
 
     public function render()
     {
-        $routes = Route::paginate(5);
+        $routes = Route::where($this->buscapor,'like','%'.$this->search.'%')->paginate(10);
+        
         $selectedRouteBusstops = $this->routeIdBeingEdited ? Route::find($this->routeIdBeingEdited)->busstops : collect();
         $allBusstops = BusStop::all();
 

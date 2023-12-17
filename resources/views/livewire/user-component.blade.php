@@ -9,7 +9,7 @@
                         <option value="name">Nombre</option>
                         <option value="lastname">Apellido</option>
                         <option value="email">Email</option>
-                        <option value="">Tipo de usuario</option>
+                        <option value="user_type">Tipo de usuario</option>
                     </select>
                     <input type="text" class="w-3/6 focus:border-sky-400 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
                 </div>

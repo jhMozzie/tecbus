@@ -10,6 +10,10 @@ class BusstopComponent extends Component
 {
     use WithPagination;
 
+    //variable para buscar
+    public $search;
+    public $buscapor = "name";
+
     public $name;
     public $selectedBusstopId;
     public $showCreateModal = false;
@@ -17,7 +21,8 @@ class BusstopComponent extends Component
 
     public function render()
     {
-        $busstops = BusStop::paginate(10);
+
+        $busstops = BusStop::where($this->buscapor,'like','%'.$this->search.'%')->paginate(10);
         return view('livewire.busstop-component', compact('busstops'));
     }
 
