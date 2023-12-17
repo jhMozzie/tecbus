@@ -15,7 +15,7 @@
                         <option value="lastname">Apellido</option>
                         <option value="phone">Telefono</option>
                         <option value="license_number">Numero de licencia</option>
-                        <option value="license_type">Tipo de licensia</option>
+                        <option value="license_type">Tipo de licencia</option>
                     </select>
                     <input type="text" class="w-3/6 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
                 </div>

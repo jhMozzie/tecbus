@@ -107,7 +107,6 @@ class DriverComponent extends Component
 
     public function render()
     {
-
         $drivers = Driver::where($this->buscapor,'like','%'.$this->search.'%')->paginate(10);
         return view('livewire.driver-component',compact('drivers'));
     }
