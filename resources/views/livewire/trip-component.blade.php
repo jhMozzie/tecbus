@@ -16,9 +16,11 @@
                     <select class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
                         <option value="name">Ruta</option>
                         <option value="license_plate">Bus</option>
+                        <option value="driver_name">Chofer - Nombre</option>
+                        <option value="driver_lastname">Chofer - Apellido</option>
                     </select>
                     <input type="text" class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
-                </div>
+                </div>                
             </div>
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -30,6 +32,10 @@
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Ruta
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Conductor
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -55,7 +61,10 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{$trip->bus->model}}</div>
+                                            <div class="text-sm text-gray-900">Chofer {{ $trip->busdriver->driver->name }} {{ $trip->busdriver->driver->lastname }}</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">Bus-{{ $trip->busdriver->bus->license_plate }} </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{$trip->trip_date}}</div>
@@ -121,13 +130,13 @@
                        
                         <div class="mb-4">
                             <label >Bus</label>
-                            <x-select  class="w-full" wire:model="bus_id">
+                            <x-select  class="w-full" wire:model="bus_driver_id">
                                 <option value="" disabled>Seleccione una de las categorías</option>
-                                @foreach ($buses as $bus)
-                                    <option value="{{$bus->id}}">{{$bus->model}}</option>
+                                @foreach ($buses_conductor as $bus)
+                                <option value="{{$bus->id}}">Conductor - {{$bus->driver->name}} {{$bus->driver->lastname}} // Bus nro de placa {{$bus->bus->license_plate}}</option>
                                 @endforeach
                             </x-select>
-                            <x-input-error :messages="$errors->get('bus_id')"/>
+                            <x-input-error :messages="$errors->get('bus_driver_id')"/>
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Fecha</label>
@@ -136,13 +145,13 @@
                             <x-input-error :messages="$errors->get('trip_date')"/>
                         </div>
                         <div class="mb-4">
-                            <label for="create-trip_date">Capacidad Estudiante</label>
+                            <label for="create-trip_date">Cantidad de Estudiantes actuales</label>
                             <input type="number" id="create-trip_date" class="w-full" wire:model="student_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('student_capacity')"/>
                         </div>
                         <div class="mb-4">
-                            <label for="create-trip_date">Capacidad Profesor</label>
+                            <label for="create-trip_date">Cantidad de Profesores actuales</label>
                             <input type="number" id="create-trip_date" class="w-full" wire:model="professor_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('professor_capacity')"/>
@@ -159,6 +168,7 @@
     </div>
     @endif
 
+    {{-- actualizar --}}
     @if ($open)
     <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
         <div class="py-12">
@@ -178,28 +188,28 @@
                        
                         <div class="mb-4">
                             <label >Bus</label>
-                            <x-select  class="w-full" wire:model="tripedit.bus_id">
+                            <x-select  class="w-full" wire:model="tripedit.bus_driver_id">
                                 <option value="" disabled>Seleccione una de las categorías</option>
-                                @foreach ($buses as $bus)
-                                    <option value="{{$bus->id}}">{{$bus->model}}</option>
+                                @foreach ($buses_conductor as $bus)
+                                <option value="{{$bus->id}}">Conductor - {{$bus->driver->name}} {{$bus->driver->lastname}} // Bus nro de placa {{$bus->bus->license_plate}}</option>
                                 @endforeach
                             </x-select>
-                            <x-input-error :messages="$errors->get('tripedit.bus_id')"/>
+                            <x-input-error :messages="$errors->get('tripedit.bus_driver_id')"/>
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Fecha</label>
-                            <input type="date" id="create-trip_date" class="w-full" wire:model="tripedit.trip_date">
+                            <input type="datetime-local" id="create-trip_date" class="w-full" wire:model="tripedit.trip_date">
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('tripedit.trip_date')"/>
                         </div>
                         <div class="mb-4">
-                            <label for="create-trip_date">Capacidad Estudiante</label>
+                            <label for="create-trip_date">Cantidad de Estudiantes actuales</label>
                             <input type="number" id="create-trip_date" class="w-full" wire:model="tripedit.student_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('tripedit.student_capacity')"/>
                         </div>
                         <div class="mb-4">
-                            <label for="create-trip_date">Capacidad Profesor</label>
+                            <label for="create-trip_date">Cantidad de Profesores actuales</label>
                             <input type="number" id="create-trip_date" class="w-full" wire:model="tripedit.professor_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('tripedit.professor_capacity')"/>

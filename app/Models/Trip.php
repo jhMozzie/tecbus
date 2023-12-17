@@ -12,22 +12,20 @@ class Trip extends Model
     
 
     protected $fillable = [
-        'route_id',
-        'bus_id',
         'trip_date',
+        'route_id',
+        'bus_driver_id',
         'student_capacity',
         'professor_capacity',
     ];
 
-    protected $casts = [
-        'trip_date' => 'datetime',
-    ];
-
-    public function route(){
+    public function route()
+    {
         return $this->belongsTo(Route::class);
     }
-    
-    public function bus(){
-        return $this->belongsTo(Bus::class);
+
+    public function busdriver()
+    {
+        return $this->belongsTo(BusDriver::class, 'bus_driver_id');
     }
 }
