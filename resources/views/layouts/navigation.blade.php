@@ -46,6 +46,11 @@
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <x-nav-link :href="route('/admin/trip')" :active="request()->routeIs('/admin/trip')" wire:navigate>
+                                    Viajes
+                                </x-nav-link>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link :href="route('/admin/route')" :active="request()->routeIs('/admin/route')" wire:navigate>
                                     Rutas
                                 </x-nav-link>
@@ -53,11 +58,6 @@
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <x-nav-link :href="route('/admin/busstop')" :active="request()->routeIs('/admin/busstop')" wire:navigate>
                                     Paraderos
-                                </x-nav-link>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <x-nav-link :href="route('/admin/trip')" :active="request()->routeIs('/admin/trip')" wire:navigate>
-                                    Viajes
                                 </x-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">

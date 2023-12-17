@@ -2,7 +2,7 @@
     {{-- Table --}}
     <div class="bg-white shadow rounded-lg p-6">
         <div class="flex flex-col ">
-            <div class="flex flex-row justify-between mb-4 ">
+            <div class="flex flex-row justify-between mb-4 py-4">
                 <div class="flex">
                     <select
                         class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none">
@@ -16,10 +16,10 @@
                         placeholder="Buscar...">
                 </div>
                 <div>
-                    <button wire:click="openCreateModal"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button wire:click="crear"
+                        class="bg-sky-500 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded lg:text-base" >
                         Agregar
-                    </button>
+                    </button>    
                 </div>
             </div>
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
