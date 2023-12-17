@@ -258,17 +258,19 @@
                             <h2>Paraderos Asociados:</h2>
                             <ul>
                                 @foreach ($selectedBusstopIds as $busstopId)
-                                    <li>
-                                        Busstop ID: {{ $busstopId }} -
-                                        {{ $this->getBusstopNameById($busstopId) }}
-
-                                        <select wire:model="selectedBusstopCounts.{{ $busstopId }}"
-                                            name="selectedBusstopCounts[]"
-                                            id="selectedBusstopCounts-{{ $busstopId }}">
-                                            @for ($i = 1; $i <= count($selectedBusstopIds); $i++)
-                                                <option value="{{ $i }}">{{ $i }}</option>
-                                            @endfor
-                                        </select>
+                                    <li class="flex flex-row justify-between items-center mb-4">
+                                        <div>
+                                            Paradero: {{ $this->getBusstopNameById($busstopId) }}
+                                        </div>
+                                        <div class="flex">
+                                            <select wire:model="selectedBusstopCounts.{{ $busstopId }}"
+                                                name="selectedBusstopCounts[]"
+                                                class="rounded-l-lg border-t border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none">
+                                                @for ($i = 1; $i <= count($selectedBusstopIds); $i++)
+                                                    <option value="{{ $i }}">{{ $i }}</option>
+                                                @endfor
+                                            </select>
+                                        </div>
                                     </li>
                                 @endforeach
                             </ul>
@@ -290,10 +292,8 @@
                         </div>
 
                         <div class="mt-6 flex justify-end">
-                            <button wire:click="confirmRouteBusstops"
-                                class="px-4 py-2 bg-green-500 text-white rounded">Crear</button>
-                            <button wire:click="updateAllBusstopOrders"
-                                class="px-4 py-2 bg-blue-500 text-white rounded ml-2">Actualizar</button>
+                            <button wire:click="saveOrUpdateBusstops"
+                                class="px-4 py-2 bg-blue-500 text-white rounded ml-2">Asociar</button>
                             <button wire:click="closeRoutebusstopModal"
                                 class="px-4 py-2 bg-red-500 text-white rounded ml-2">Cancelar</button>
                         </div>
@@ -302,8 +302,5 @@
             </div>
         </div>
     @endif
-
     <!-- ... -->
-
-
 </div>
