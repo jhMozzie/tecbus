@@ -33,10 +33,11 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Gestión de buses
+                                                Viajes
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Descubre la sencillez de nuestro proceso de reserva. Elige el viaje que deseas realizar  y asegura tu lugar en Tecbus. ¡No te olvides de confirmar tu viaje!
+                                                Descubre tu próximo viaje fácilmente en nuestra sección dedicada. Visualiza rutas, 
+                                                horarios y reserva tu asiento con facilidad. 
                                                 </p>
                                             </div>
                                         </div>
@@ -45,22 +46,10 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                Asignación de Asientos
+                                                Reservas
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Cada pasajero tiene la oportunidad de asegurar su asiento, pero recuerda, ¡es un juego de azar! Las reservas se cierran cuando todos los asientos están ocupados para garantizar un viaje cómodo y seguro para todos.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                                        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                                            <div class="flex flex-wrap no-underline hover:no-underline">
-                                                <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Asientos designados para profesores
-                                                </div>
-                                                <p class="text-gray-800 text-base px-6 mb-5">
-                                                En Tecbus, comprendemos la importancia de un entorno educativo adecuado. Por ello, reservamos 8 asientos exclusivos para profesores en cada viaje, brindándoles comodidad y un espacio propio. 
+                                                Al realizar tu reserva, confirmas tu asistencia. En caso de no poder asistir o si surgen inconvenientes, puedes cancelar en cualquier momento.
                                                 </p>
                                             </div>
                                         </div>
@@ -99,10 +88,11 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Gestión de buses
+                                                Viajes
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Descubre la sencillez de nuestro proceso de reserva. Elige el viaje que deseas realizar  y asegura tu lugar en Tecbus. ¡No te olvides de confirmar tu viaje!
+                                                Descubre tu próximo viaje fácilmente en nuestra sección dedicada. Visualiza rutas, 
+                                                horarios y reserva tu asiento con facilidad. 
                                                 </p>
                                             </div>
                                         </div>
@@ -111,22 +101,11 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                Asignación de Asientos
+                                                Reservas
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Cada pasajero tiene la oportunidad de asegurar su asiento, pero recuerda, ¡es un juego de azar! Las reservas se cierran cuando todos los asientos están ocupados para garantizar un viaje cómodo y seguro para todos.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
-                                        <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                                            <div class="flex flex-wrap no-underline hover:no-underline">
-                                                <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Asientos designados para profesores
-                                                </div>
-                                                <p class="text-gray-800 text-base px-6 mb-5">
-                                                En Tecbus, comprendemos la importancia de un entorno educativo adecuado. Por ello, reservamos 8 asientos exclusivos para profesores en cada viaje, brindándoles comodidad y un espacio propio. 
+                                                Al realizar tu reserva, confirmas tu asistencia. En caso de no poder asistir o 
+                                                si surgen inconvenientes, puedes cancelar en cualquier momento.
                                                 </p>
                                             </div>
                                         </div>
@@ -164,10 +143,10 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Gestión de buses
+                                                Gestión de Rutas
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Descubre la sencillez de nuestro proceso de reserva. Elige el viaje que deseas realizar  y asegura tu lugar en Tecbus. ¡No te olvides de confirmar tu viaje!
+                                                Personaliza y optimiza las rutas de los buses para garantizar una distribución eficiente, además de asignar a un conductor para que lleve a cabo el trayecto. 
                                                 </p>
                                             </div>
                                         </div>
@@ -176,10 +155,10 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                Asignación de Asientos
+                                                Gestión de abordaje
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Cada pasajero tiene la oportunidad de asegurar su asiento, pero recuerda, ¡es un juego de azar! Las reservas se cierran cuando todos los asientos están ocupados para garantizar un viaje cómodo y seguro para todos.
+                                                Visualiza a los usuarios que han confirmado el viaje para tener una mejor organización y eficiencia del trayecto    .
                                                 </p>
                                             </div>
                                         </div>
@@ -188,10 +167,10 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Asientos designados para profesores
+                                                Gestión de usuarios
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                En Tecbus, comprendemos la importancia de un entorno educativo adecuado. Por ello, reservamos 8 asientos exclusivos para profesores en cada viaje, brindándoles comodidad y un espacio propio. 
+                                                Personaliza la información de los usuarios de manera rápida y eficiente, como también la opción de poder eliminarlos. 
                                                 </p>
                                             </div>
                                         </div>
@@ -230,10 +209,10 @@
                                         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                                             <div class="flex flex-wrap no-underline hover:no-underline">
                                                 <div class="w-full font-bold text-xl text-gray-800 px-6 py-4">
-                                                    Gestión de buses
+                                                Gestión de Rutas y Horarios 
                                                 </div>
                                                 <p class="text-gray-800 text-base px-6 mb-5">
-                                                Descubre la sencillez de nuestro proceso de reserva. Elige el viaje que deseas realizar  y asegura tu lugar en Tecbus. ¡No te olvides de confirmar tu viaje!
+                                                Personaliza y optimiza las rutas de autobuses para garantizar una distribución equitativa y eficiente.
                                                 </p>
                                             </div>
                                         </div>
