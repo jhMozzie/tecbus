@@ -55,7 +55,7 @@ class TripSeeder extends Seeder
                     'route_id' => $routeId,
                     'bus_driver_id' => $busDriverId,
                     'trip_date' => $carbonDateTime,
-                    'student_capacity' => rand(20, 50),
+                    'student_capacity' => rand(20, 35),
                     'professor_capacity' => rand(1, 5),
                     'created_at' => now(),
                     'updated_at' => now(),

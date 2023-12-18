@@ -11,8 +11,8 @@ class Boarding extends Model
 
     protected $fillable = ['confirmation','trip_id'];
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class, 'user_boarding');
+        return $this->belongsToMany(User::class, 'user_boarding');
     }
 }

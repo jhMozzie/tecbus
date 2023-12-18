@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
         Route::view('/admin/busstop', 'admin.busstop')->name("/admin/busstop");
         Route::view('/admin/trip', 'admin.trip')->name("/admin/trip");
         Route::view('/admin/user', 'admin.user')->name("/admin/user");
+        Route::view('/admin/boarding', 'admin.boarding')->name("/admin/boarding");
         Route::view('/admin/user_type', 'admin.user_type')->name("/admin/user_type");
         Route::view('/Administrador/dashboard', 'admin.admin_dashboard')->name("Administrador.dashboard");
     });
