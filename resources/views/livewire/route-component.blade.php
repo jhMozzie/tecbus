@@ -221,14 +221,14 @@
 
     @if ($showRoutebusstopModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0 overflow-y-auto">
-            <div class="py-12">
+            <div class="py-12 ">
                 <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white shadow rounded-lg p-6 mb-8">
-                        <h1>Ruta ID: {{ $routeIdBeingEdited }}</h1>
-
+                        <h1 class="py-4 text-sky-600 font-bold">RUTA ID: {{ $routeIdBeingEdited }}</h1>
+                        <hr><br>
                         <!-- Dentro del div "Paraderos Asociados" -->
-                        <div class="my-8">
-                            <h2>Paraderos Asociados:</h2>
+                        <label class="py-6 pt-4 font-semibold">Paraderos asociados</label>
+                        <div class="py-4">
                             <ul>
                                 @foreach ($selectedBusstopIds as $busstopId)
                                     <li class="flex flex-row justify-between items-center mb-4">
@@ -238,7 +238,7 @@
                                         <div class="flex">
                                             <select wire:model="selectedBusstopCounts.{{ $busstopId }}"
                                                 name="selectedBusstopCounts[]"
-                                                class="rounded-l-lg border-t border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none">
+                                                class="focus:border-sky-400 rounded-l-lg border-t border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none">
                                                 @for ($i = 1; $i <= count($selectedBusstopIds); $i++)
                                                     <option value="{{ $i }}">{{ $i }}</option>
                                                 @endfor
@@ -248,8 +248,8 @@
                                 @endforeach
                             </ul>
                         </div>
+                        <label class="py-4 font-semibold">Lista de paraderos</label>
                         <div class="my-8 overflow-y-auto max-h-64">
-                            <h1>Lista de paraderos</h1>
                             <div class="grid grid-cols-2 gap-4">
                                 @foreach ($allBusstops as $busstop)
                                     <div

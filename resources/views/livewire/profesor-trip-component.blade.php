@@ -3,17 +3,16 @@
         {{-- Table --}}
 <div class="bg-white shadow rounded-lg p-6">
     <div class="flex flex-col ">
-        <h2 class="text-3xl font-semibold mb-2">Lista de Viajes </h2>
         <div class="flex flex-row justify-between mb-4 ">
 
-            <div class="flex">
-                <select class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
+            <div class="flex w-3/6">
+                <select class="w-3/6 rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
                     <option value="name">Ruta</option>
                     <option value="license_plate">Bus</option>
                     <option value="driver_name">Chofer - Nombre</option>
                     <option value="driver_lastname">Chofer - Apellido</option>
                 </select>
-                <input type="text" class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
+                <input type="text" class="w-3/6 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
             </div>                
         </div>
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -64,18 +63,18 @@
                                         <div class="text-sm text-gray-900">{{$trip->trip_date}}</div>
                                     </td>
 
-
+            
 
                                     <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
                                         @if (!$profesorReservasRealizadas[$trip->id])
-                                            <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none" wire:click="reservar({{$trip}})" {{ $profesorReservasRealizadas[$trip->id] ? 'disabled' : '' }}>
+                                            <button class="inline-flex items-center px-4 py-2 bg-sky-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-sky-400 focus:bg-sky-700 active:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition ease-in-out duration-150" wire:click="reservar({{$trip}})" {{ $profesorReservasRealizadas[$trip->id] ? 'disabled' : '' }}>
                                                 Reservar
                                             </button>
                                         @else
-                                            <span class="text-green-500">Reservado</span>
+                                            <span class="ml-2 px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-md focus:outline-none bg-teal-500">Reservado</span>
                                         @endif
                                     
-                                        <button class="ml-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 focus:outline-none" wire:click="eliminar({{$trip->id}})" {{ $profesorReservasRealizadas[$trip->id] ? '' : 'disabled' }}>
+                                        <button type="button" class="ml-2 px-4 py-2 bg-amber-400 text-white rounded-md focus:outline-none" wire:click="eliminar({{$trip->id}})" {{ $profesorReservasRealizadas[$trip->id] ? '' : 'disabled' }}>
                                             Cancelar
                                         </button>
                                     </td>

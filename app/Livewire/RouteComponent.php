@@ -14,6 +14,9 @@ class RouteComponent extends Component
     //variable para buscar
     public $search;
     public $buscapor = "name";
+    public $search2;
+    public $buscapor2 = "name";
+   
 
     public $name;
     public $service_day = 'Lunes a Viernes';

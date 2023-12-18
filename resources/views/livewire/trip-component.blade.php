@@ -3,14 +3,14 @@
     <div class="bg-white shadow rounded-lg p-6 w-full">
         <div class="flex flex-col">
             <div class="flex flex-row justify-between mb-4 py-4 ">
-                <div class="flex">
-                    <select class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
+                <div class="flex w-3/6">
+                    <select class="w-3/6 focus:border-sky-400  rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
                         <option value="name">Ruta</option>
                         <option value="license_plate">Bus</option>
                         <option value="driver_name">Chofer - Nombre</option>
                         <option value="driver_lastname">Chofer - Apellido</option>
                     </select>
-                    <input type="text" class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
+                    <input type="text" class="w-3/6 focus:border-sky-400  rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
                 </div> 
                 <div>
                     <button wire:click="crear"
@@ -106,9 +106,9 @@
     {{-- crear --}}
     @if ($open2)
     <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
-        <div class="py-12">
-            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white shadow rounded-lg p-6">
+        <div class="py-12 fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 w-auto">
+                <div class="bg-white shadow text-left rounded-lg p-6 sm:w-3/6">
                     <form wire:submit="save">
                         <div class="mb-4">
                             <label  for="create-category" >Ruta</label>
@@ -133,26 +133,26 @@
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Fecha</label>
-                            <input type="datetime-local" id="create-trip_date" class="w-full" wire:model="trip_date">
+                            <input type="datetime-local" id="create-trip_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="trip_date">
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('trip_date')"/>
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Cantidad de Estudiantes actuales</label>
-                            <input type="number" id="create-trip_date" class="w-full" wire:model="student_capacity" disabled>
+                            <input type="number" id="create-trip_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="student_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('student_capacity')"/>
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Cantidad de Profesores actuales</label>
-                            <input type="number" id="create-trip_date" class="w-full" wire:model="professor_capacity" disabled>
+                            <input type="number" id="create-trip_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="professor_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('professor_capacity')"/>
                         </div>
-
-                        <div class="flex justify-end">
-                            <button type="button" class="mr-2" wire:click="set('open2', false)">Cancelar</button>
-                            <x-primary-button>Crear</x-primary-button>
+                        <div class="flex justify-end pt-4">
+                                    <x-primary-button>Crear</x-primary-button>
+                                    <button type="button" class=" px-6"
+                                    wire:click="set('open2', false)">Cancelar</button>
                         </div>
                     </form>
                 </div>
@@ -164,9 +164,9 @@
     {{-- actualizar --}}
     @if ($open)
     <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
-        <div class="py-12">
-            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white shadow rounded-lg p-6">
+        <div class="py-12 fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 w-auto">
+                <div class="bg-white shadow text-left rounded-lg p-6 sm:w-3/6">
                     <form wire:submit="update">
                         <div class="mb-4">
                             <label  for="create-category" >Ruta</label>
@@ -191,27 +191,28 @@
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Fecha</label>
-                            <input type="datetime-local" id="create-trip_date" class="w-full" wire:model="tripedit.trip_date">
+                            <input type="datetime-local" id="create-trip_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="tripedit.trip_date">
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('tripedit.trip_date')"/>
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Cantidad de Estudiantes actuales</label>
-                            <input type="number" id="create-trip_date" class="w-full" wire:model="tripedit.student_capacity" disabled>
+                            <input type="number" id="create-trip_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="tripedit.student_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('tripedit.student_capacity')"/>
                         </div>
                         <div class="mb-4">
                             <label for="create-trip_date">Cantidad de Profesores actuales</label>
-                            <input type="number" id="create-trip_date" class="w-full" wire:model="tripedit.professor_capacity" disabled>
+                            <input type="number" id="create-trip_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" wire:model="tripedit.professor_capacity" disabled>
                             {{-- modifique el input-error --}}
                             <x-input-error :messages="$errors->get('tripedit.professor_capacity')"/>
                         </div>
 
-                        <div class="flex justify-end">
-                            <button type="button" class="mr-2" wire:click="set('open', false)">Cancelar</button>
-                            <x-primary-button>Actualizar</x-primary-button>
-                        </div>
+                        <div class="flex justify-end pt-4">
+                                    <x-primary-button>Actualizar</x-primary-button>
+                                    <button type="button" class=" px-6"
+                                        wire:click="set('open', false)">Cancelar</button>
+                                </div>
                     </form>
                 </div>
             </div>

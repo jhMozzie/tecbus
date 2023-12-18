@@ -14,27 +14,27 @@
                 @if (auth()->check())
                     @switch(auth()->user()->userType->name)
                         @case('Estudiante')
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex text-2xl">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 xl:flex text-2xl">
                                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                                    {{ __('Dashboard') }}
+                                    {{ __('Inicio') }}
                                 </x-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 xl:flex">
                                 <x-nav-link :href="route('/estudiante/trip')" :active="request()->routeIs('/estudiante/trip')" wire:navigate>
-                                    Estudiante viajes y reserva
+                                    Viajes y reserva
                                 </x-nav-link>
                             </div>
                         @break
 
                         @case('Profesor')
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 xl:flex">
                                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                                    {{ __('Dashboard') }}
+                                    {{ __('Inicio') }}
                                 </x-nav-link>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 xl:flex">
                                 <x-nav-link :href="route('/profesor/trip')" :active="request()->routeIs('/profesor/trip')" wire:navigate>
-                                    Profesor viajes y reserva
+                                    Viajes y reserva
                                 </x-nav-link>
                             </div>
                         @break
@@ -105,9 +105,9 @@
                         @break
 
                         @case('Chofer')
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 xl:flex">
                                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                                    {{ __('Dashboard') }}
+                                    {{ __('Inicio') }}
                                 </x-nav-link>
                             </div>
                         @break
