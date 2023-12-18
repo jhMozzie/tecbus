@@ -5,11 +5,11 @@
             <div class="flex flex-row justify-between mb-4 py-4">
                 <div class="flex">
                     <select
-                        class="w-fit rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
+                        class="w-fit focus:border-sky-400 rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
                         <option value="name">Nombre - Paradero</option>
                     </select>
                     <input type="text"
-                        class="w-11/12 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none"
+                        class="w-11/12 focus:border-sky-400 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none"
                         placeholder="Buscar..." wire:model.live="search">
                 </div>
                 <button wire:click="crear"
@@ -69,21 +69,18 @@
     {{-- Modal Crear --}}
     @if ($showCreateModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
-            <div class="py-12">
-                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <div class="py-12 fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 w-auto">
+                    <div class="bg-white shadow text-left rounded-lg p-6 sm:w-3/6">
                         <form wire:submit="save">
                             <div class="mb-4">
                                 <x-label class="">Nombre</x-label>
                                 <x-input wire:model="name" class="w-full" />
                             </div>
-                            <div class="flex justify-end">
-                                <x-primary-button class="mr-2">
-                                    Confirmar
-                                </x-primary-button>
-                                <x-danger-button wire:click="closeCreateModal">
-                                    Cancelar
-                                </x-danger-button>
+                            <div class="flex justify-end pt-4">
+                                    <x-primary-button>Crear</x-primary-button>
+                                    <button type="button" class=" px-6"
+                                        wire:click="closeCreateModal">Cancelar</button>
                             </div>
                         </form>
                     </div>
@@ -95,22 +92,19 @@
     {{-- Modal Edit --}}
     @if ($showEditModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
-            <div class="py-12">
-                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <div class="py-12 fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 w-auto">
+                    <div class="bg-white shadow text-left rounded-lg p-6 sm:w-3/6">
                         <form wire:submit="update">
                             <!-- Agrega aquí los campos de edición según tus necesidades -->
                             <div class="mb-4">
                                 <x-label>Nombre</x-label>
                                 <x-input wire:model="name" class="w-full" />
                             </div>
-                            <div class="flex justify-end">
-                                <x-primary-button class="mr-2">
-                                    Actualizar
-                                </x-primary-button>
-                                <x-danger-button wire:click="closeEditModal">
-                                    Cancelar
-                                </x-danger-button>
+                            <div class="flex justify-end pt-4">
+                                <x-primary-button>Actualizar</x-primary-button>
+                                <button type="button" class=" px-6"
+                                    wire:click="closeEditModal">Cancelar</button>
                             </div>
                         </form>
                     </div>

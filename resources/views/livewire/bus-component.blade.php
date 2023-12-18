@@ -139,22 +139,26 @@
                             </div>
                             <div class="mb-4">
                                 <label>Conductores</label>
-                                <div>
-                                    @foreach ($drivers as $driver)
-                                        <div class="mb-2">
-                                            <label>
-                                                <input type="checkbox" wire:model="chofer" value="{{ $driver->id }}">
-                                                {{ $driver->name }}
-                                            </label>
-                                        </div>
-                                    @endforeach
+                                <div class=" overflow-y-auto max-h-20">
+                                <div class="grid grid-cols-2 gap-4">
+                                @foreach ($drivers as $driver)
+                                    <div
+                                        class="flex items-center ps-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input wire:model.live="selectedBusstopIds" id="busstop-{{ $driver->id }}"
+                                            type="checkbox" value="{{ $driver->id }}" name="selectedBusstopIds[]"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="busstop-{{ $driver->id }}"
+                                            class="w-full py-4 ms-2 text-sm font-medium text-black">{{ $driver->name }}</label>
+                                    </div>
+                                @endforeach
+                                </div>
                                 </div>
                                 <x-input-error :messages="$errors->get('chofer')" />
                                 <div class="flex justify-end pt-4">
                                     <x-primary-button>Crear</x-primary-button>
                                     <button type="button" class=" px-6"
                                         wire:click="set('open2', false)">Cancelar</button>
-                            </div>
+                                </div>
                         </form>
                     </div>
                 </div>

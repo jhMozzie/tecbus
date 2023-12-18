@@ -119,9 +119,9 @@
     {{-- Modal Crear --}}
     @if ($showCreateModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
-            <div class="py-12">
-                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
-                    <div class="bg-white shadow rounded-lg p-6 mb-8">
+            <div class="py-12 fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-left sm:items-center sm:p-0 w-auto">
+                    <div class="max-w-lg mx-auto sm:px-6 lg:px-8 sm:w-3/6 bg-white shadow rounded-lg p-6 mb-8">
                         <form wire:submit="save">
                             <div class="mb-4">
                                 <x-label>Nombre</x-label>
@@ -153,13 +153,9 @@
                                     @endforeach
                                 </x-select>
                             </div>
-                            <div class="flex justify-end">
-                                <x-primary-button class="mr-2">
-                                    Confirmar
-                                </x-primary-button>
-                                <x-danger-button wire:click="closeCreateModal">
-                                    Cancelar
-                                </x-danger-button>
+                            <div class="flex justify-end py-2">
+                                <x-primary-button>Crear</x-primary-button>
+                                <button type="button" class=" px-6"  wire:click="closeCreateModal">Cancelar</button>
                             </div>
                         </form>
                     </div>
@@ -172,8 +168,9 @@
     {{-- Modal Edit --}}
     @if ($showEditModal)
         <div class="bg-gray-800 bg-opacity-25 fixed inset-0">
-            <div class="py-12">
-                <div class="max-w-lg mx-auto sm:px-6 lg:px-8">
+            <div class="py-12 fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-left sm:items-center sm:p-0 w-auto">
+                <div class="max-w-lg mx-auto sm:px-6 lg:px-8 sm:w-3/6">
                     <div class="bg-white shadow rounded-lg p-6 mb-8">
                         <form wire:submit="update">
                             <!-- Agrega aquí los campos de edición según tus necesidades -->
@@ -207,15 +204,12 @@
                                     @endforeach
                                 </x-select>
                             </div>
-                            <div class="flex justify-end">
-                                <x-primary-button class="mr-2">
-                                    Actualizar
-                                </x-primary-button>
-                                <x-danger-button wire:click="closeEditModal">
-                                    Cancelar
-                                </x-danger-button>
+                            <div class="flex justify-end py-2">
+                                <x-primary-button>Actualizar</x-primary-button>
+                                <button type="button" class=" px-6" wire:click="closeEditModal">Cancelar</button>
                             </div>
                         </form>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -270,11 +264,9 @@
                             </div>
                         </div>
 
-                        <div class="mt-6 flex justify-end">
-                            <button wire:click="saveOrUpdateBusstops"
-                                class="px-4 py-2 bg-blue-500 text-white rounded ml-2">Asociar</button>
-                            <button wire:click="closeRoutebusstopModal"
-                                class="px-4 py-2 bg-red-500 text-white rounded ml-2">Cancelar</button>
+                        <div class="flex justify-end py-2">
+                                <x-primary-button wire:click="saveOrUpdateBusstops">Asociar</x-primary-button>
+                                <button type="button" class=" px-6" wire:click="closeRoutebusstopModal">Cancelar</button>
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
         <div class="flex flex-col ">
             <div class="flex flex-row justify-between mb-4 py-4">
                 <div class="flex w-3/6">
-                    <select class="w-3/6 rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
+                    <select class="w-3/6 focus:border-sky-400 rounded-l-lg border-t mr-0 border-b border-l text-gray-800 bg-white px-3 py-2 pr-8 focus:outline-none" wire:model.live="buscapor">
                         <option value="dni">DNI</option>
                         <option value="name">Nombre</option>
                         <option value="lastname">Apellido</option>
@@ -17,7 +17,7 @@
                         <option value="license_number">Numero de licencia</option>
                         <option value="license_type">Tipo de licencia</option>
                     </select>
-                    <input type="text" class="w-3/6 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
+                    <input type="text" class="w-3/6 focus:border-sky-400 rounded-r-lg border-t border-b border-r text-gray-800 bg-white px-3 py-2 focus:outline-none" placeholder="Buscar... " wire:model.live="search">
                 </div>
                 <div>
                     <button wire:click="crear"
