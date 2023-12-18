@@ -1,5 +1,4 @@
 <div>
-    aca va ir mi trabla trip uwu  {{$usuario}}
 
         {{-- Table --}}
 <div class="bg-white shadow rounded-lg p-6">
@@ -68,11 +67,15 @@
 
 
                                     <td class="px-6 py-4 whitespace-nowrap text-center mb-8">
-                                        <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none" wire:click="reservar({{$trip}})" {{ $reservasRealizadas[$trip['id']] ? 'disabled' : '' }}>
-                                            Reservar
-                                        </button>
-                    
-                                        <button class="ml-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 focus:outline-none" wire:click="eliminar({{$trip['id']}})" {{ $reservasRealizadas[$trip['id']] ? '' : 'disabled' }}>
+                                        @if (!$profesorReservasRealizadas[$trip->id])
+                                            <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 focus:outline-none" wire:click="reservar({{$trip}})" {{ $profesorReservasRealizadas[$trip->id] ? 'disabled' : '' }}>
+                                                Reservar
+                                            </button>
+                                        @else
+                                            <span class="text-green-500">Reservado</span>
+                                        @endif
+                                    
+                                        <button class="ml-2 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-700 focus:outline-none" wire:click="eliminar({{$trip->id}})" {{ $profesorReservasRealizadas[$trip->id] ? '' : 'disabled' }}>
                                             Cancelar
                                         </button>
                                     </td>
